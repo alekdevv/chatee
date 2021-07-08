@@ -18,14 +18,14 @@ class XMPPManager {
     
     private var userJID: XMPPJID? {
         didSet {
-            Configuration.shared.userJID = userJID
+            Configuration.shared.userJID = self.userJID
         }
     }
     private var password: String?
     
     private var hostName: String? {
         didSet {
-            Configuration.shared.hostName = hostName
+            Configuration.shared.hostName = self.hostName
         }
     }
     private var jidResource: String {
@@ -45,16 +45,14 @@ class XMPPManager {
     }
         
     func connect(hostName: String, bareJid: String, password: String) {
+        guard self.xmppStream.isDisconnected else { return }
+
         self.hostName = hostName
 
         setupStream()
         setupReconnect()
         setupPing()
         
-        guard self.xmppStream.isDisconnected else {
-            return
-        }
-
         self.userJID = XMPPJID(string: "\(bareJid)/\(jidResource)")
         self.xmppStream.myJID = self.userJID
         self.password = password

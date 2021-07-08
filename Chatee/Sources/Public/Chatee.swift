@@ -16,13 +16,15 @@ public class Chatee {
     public weak var chateeContactsDelegate: ChateeProfileDelegate?
     public weak var chateeErrorDelegate: ChateeProfileDelegate?
     
-    private var xmppManager: XMPPManager?
+    private let xmppManager: XMPPManager
     
-    private init() {}
+    private init() {
+        self.xmppManager = XMPPManager()
+    }
     
     /// Used to connect with XMPP server.
     public func connect(hostName: String, bareJid: String, password: String) {
-        
+        self.xmppManager.connect(hostName: hostName, bareJid: bareJid, password: password)
     }
     
 }
