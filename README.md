@@ -1,6 +1,4 @@
-<p align="center">
-  # chatee
-</p>
+# **chatee**
 
 <p align="center">
   <img src="https://i.postimg.cc/Znhdjhqn/chatee-logo.png" />
