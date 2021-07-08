@@ -1,6 +1,3 @@
-# **chatee**
-<br/><br/>
-<br/><br/>
 <p align="center">
   <img src="https://i.postimg.cc/Znhdjhqn/chatee-logo.png" />
 </p>
