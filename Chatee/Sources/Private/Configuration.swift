@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import XMPPFramework
 
 class Configuration {
     
@@ -13,6 +14,7 @@ class Configuration {
     
     private init() {}
     
+    var userJID: XMPPJID?
     var hostName: String?
     var bareJid: String?
     
