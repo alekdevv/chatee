@@ -16,14 +16,14 @@ public struct ChateeMessage {
     public let timestamp: Date
     public let status: ChateeMessageStatus
     
-//    static func convert(dbMessage: MessageDBModel) -> ChateeMessage {
-//        return MessageModel(id: dbMessage.id, senderID: dbMessage.senderID, senderName: dbMessage.room?.displayName, text: dbMessage.text,
-//                            extraBody: nil, timestamp: dbMessage.timestamp, status: dbMessage.statusType)
-//    }
-//
-//    static func convert(dbMessages: [MessageDBModel]) -> [ChateeMessage] {
-//        let messages = dbMessages.map { return convert(dbMessage: $0) }
-//
-//        return messages
-//    }
+    static func convert(dbMessage: MessageDBModel) -> ChateeMessage {
+        return ChateeMessage(id: dbMessage.id, senderID: dbMessage.senderID, senderName: dbMessage.room?.displayName, text: dbMessage.text,
+                            extraBody: nil, timestamp: dbMessage.timestamp, status: dbMessage.statusType)
+    }
+
+    static func convert(dbMessages: [MessageDBModel]) -> [ChateeMessage] {
+        let messages = dbMessages.map { return convert(dbMessage: $0) }
+
+        return messages
+    }
 }

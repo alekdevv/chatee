@@ -30,6 +30,8 @@
 		A4C07C3E26985E0700366946 /* Omemo+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C07C3D26985E0700366946 /* Omemo+Extension.swift */; };
 		A4C07C4026985EE000366946 /* MessageDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C07C3F26985EE000366946 /* MessageDBModel.swift */; };
 		A4C07C4226985F0000366946 /* RoomDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C07C4126985F0000366946 /* RoomDBModel.swift */; };
+		A4C07C4426985F3500366946 /* MessageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C07C4326985F3500366946 /* MessageStorage.swift */; };
+		A4C07C462698601F00366946 /* OutgoingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C07C452698601F00366946 /* OutgoingMessage.swift */; };
 		A4E294F02695B55E00E46B18 /* Chatee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E294E62695B55D00E46B18 /* Chatee.framework */; };
 		A4E294F52695B55E00E46B18 /* ChateeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E294F42695B55E00E46B18 /* ChateeTests.swift */; };
 		A4E294F72695B55E00E46B18 /* Chatee.h in Headers */ = {isa = PBXBuildFile; fileRef = A4E294E92695B55D00E46B18 /* Chatee.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -117,6 +119,8 @@
 		A4C07C3D26985E0700366946 /* Omemo+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Omemo+Extension.swift"; sourceTree = "<group>"; };
 		A4C07C3F26985EE000366946 /* MessageDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDBModel.swift; sourceTree = "<group>"; };
 		A4C07C4126985F0000366946 /* RoomDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDBModel.swift; sourceTree = "<group>"; };
+		A4C07C4326985F3500366946 /* MessageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStorage.swift; sourceTree = "<group>"; };
+		A4C07C452698601F00366946 /* OutgoingMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingMessage.swift; sourceTree = "<group>"; };
 		A4E294E62695B55D00E46B18 /* Chatee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Chatee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E294E92695B55D00E46B18 /* Chatee.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chatee.h; sourceTree = "<group>"; };
 		A4E294EA2695B55D00E46B18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -182,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				A4C07C22269853AE00366946 /* ContactStorage.swift */,
+				A4C07C4326985F3500366946 /* MessageStorage.swift */,
 				A4C07C2B269858D500366946 /* OmemoStorage.swift */,
 				A4C07C3926985D1700366946 /* SignalStorage.swift */,
 				A4C07C262698542A00366946 /* Models */,
@@ -290,6 +295,7 @@
 				A4C07C212698533D00366946 /* Storage */,
 				A4C07C3B26985DCB00366946 /* Extensions */,
 				A4C07C3C26985DDC00366946 /* Utils */,
+				A4C07C452698601F00366946 /* OutgoingMessage.swift */,
 				A4C07C29269854AD00366946 /* Errors.swift */,
 			);
 			path = Private;
@@ -497,6 +503,7 @@
 				A4C07C282698543600366946 /* ContactDBModel.swift in Sources */,
 				A4C07C3E26985E0700366946 /* Omemo+Extension.swift in Sources */,
 				A4E2953A2695F6AB00E46B18 /* ChateeFile.swift in Sources */,
+				A4C07C4426985F3500366946 /* MessageStorage.swift in Sources */,
 				A4C07C2C269858D500366946 /* OmemoStorage.swift in Sources */,
 				A4C07C20269852D000366946 /* ContactsManager.swift in Sources */,
 				A4C07C342698594E00366946 /* SignalIdentityDBModel.swift in Sources */,
@@ -514,6 +521,7 @@
 				A48EA8142697496500510E05 /* Logger.swift in Sources */,
 				A4E295382695F69B00E46B18 /* ChateeRecentConversation.swift in Sources */,
 				A4E295322695F66E00E46B18 /* ChateeMessage.swift in Sources */,
+				A4C07C462698601F00366946 /* OutgoingMessage.swift in Sources */,
 				A4C07C302698590200366946 /* SessionDBModel.swift in Sources */,
 				A4C07C25269853CE00366946 /* Constant.swift in Sources */,
 				A4E2953E2695F6D000E46B18 /* ChateeChatState.swift in Sources */,
