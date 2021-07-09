@@ -101,7 +101,7 @@ extension XMPPManager: XMPPStreamDelegate {
         Logger.shared.log("xmppStreamDidConnect", level: .verbose)
 
         if let password = self.password {
-            try! sender.authenticate(withPassword: password)
+            try? sender.authenticate(withPassword: password)
         }
     }
     

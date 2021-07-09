@@ -30,7 +30,7 @@ class ContactStorageManager: ContactStorage {
     
     private lazy var realmConfig: Realm.Configuration = {
         let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-        let url = documentDirectory.appendingPathComponent("\(self.userJid)-chat-db.realm")
+        let url = documentDirectory.appendingPathComponent("\(self.userBareJid)-chat-db.realm")
         let realmSchemaVersion = Constant.realmSchemaVersion
 
         let config = Realm.Configuration( fileURL: url, schemaVersion: realmSchemaVersion, migrationBlock: { migration, oldSchemaVersion in
@@ -40,8 +40,8 @@ class ContactStorageManager: ContactStorage {
         return config
     }()
     
-    private var userJid: String {
-        return Configuration.shared.userJid ?? "no-user-jid" // No user jid scenario shouldn't happen
+    private var userBareJid: String {
+        return Configuration.shared.userBareJid ?? "no-user-jid" // No user jid scenario shouldn't happen
     }
     
     init() {
@@ -50,7 +50,10 @@ class ContactStorageManager: ContactStorage {
 
     func addContact(_ contact: ChateeContact, completion: @escaping (ChateeContact?, DatabaseError?) -> Void) {
         contactsWorkQueue.async {
-            let realm = try! Realm(configuration: self.realmConfig)
+            guard let realm = try? Realm(configuration: self.realmConfig) else {
+                completion(nil, DatabaseError.databaseAccessFailed)
+                return
+            }
             
             guard realm.object(ofType: ContactDBModel.self, forPrimaryKey: contact.jid) == nil ||
                 realm.object(ofType: ContactDBModel.self, forPrimaryKey: contact.jid)?.subscriptionType != contact.subscription else {
@@ -77,8 +80,11 @@ class ContactStorageManager: ContactStorage {
     
     func removeContact(_ contact: ChateeContact, completion: @escaping (ChateeContact?, DatabaseError?) -> Void) {
         contactsWorkQueue.async {
-            let realm = try! Realm(configuration: self.realmConfig)
-
+            guard let realm = try? Realm(configuration: self.realmConfig) else {
+                completion(nil, DatabaseError.databaseAccessFailed)
+                return
+            }
+            
             do {
                 try realm.write {
                     guard let contactDB = realm.object(ofType: ContactDBModel.self, forPrimaryKey: contact.jid) else {
@@ -99,8 +105,11 @@ class ContactStorageManager: ContactStorage {
     
     func loadContacts(subscriptionType: ChateeContactSubscription, completion: @escaping ([ChateeContact], DatabaseError?) -> Void) {
         contactsWorkQueue.async {
-            let realm = try! Realm(configuration: self.realmConfig)
-
+            guard let realm = try? Realm(configuration: self.realmConfig) else {
+                completion([], DatabaseError.databaseAccessFailed)
+                return
+            }
+            
             var contacts = [ChateeContact]()
 
             let contactsDB = realm.objects(ContactDBModel.self).filter("subscription = '\(subscriptionType.rawValue)'")
@@ -122,8 +131,11 @@ class ContactStorageManager: ContactStorage {
     
     func acceptSubscription(contactJid: String, completion: @escaping (ChateeContact?, DatabaseError?) -> Void) {
         contactsWorkQueue.async {
-            let realm = try! Realm(configuration: self.realmConfig)
-
+            guard let realm = try? Realm(configuration: self.realmConfig) else {
+                completion(nil, DatabaseError.databaseAccessFailed)
+                return
+            }
+            
             guard let contactDB = realm.object(ofType: ContactDBModel.self, forPrimaryKey: contactJid) else {
                 completion(nil, DatabaseError.noContactWithJid)
                 
@@ -148,8 +160,11 @@ class ContactStorageManager: ContactStorage {
     
     func rejectSubscription(contactJid: String, completion: @escaping (Bool, DatabaseError?) -> Void) {
         contactsWorkQueue.async {
-            let realm = try! Realm(configuration: self.realmConfig)
-
+            guard let realm = try? Realm(configuration: self.realmConfig) else {
+                completion(false, DatabaseError.databaseAccessFailed)
+                return
+            }
+            
             guard let contactDB = realm.object(ofType: ContactDBModel.self, forPrimaryKey: contactJid) else {
                 completion(false, DatabaseError.noContactWithJid)
                 
@@ -170,16 +185,19 @@ class ContactStorageManager: ContactStorage {
 
     func saveAvatar(_ avatar: Data, contactJid: String, completion: @escaping (Data?, DatabaseError?) -> Void) {
         contactsWorkQueue.async {
-            let realm = try! Realm(configuration: self.realmConfig)
+            guard let realm = try? Realm(configuration: self.realmConfig) else {
+                completion(nil, DatabaseError.databaseAccessFailed)
+                return
+            }
             
             if let contact = realm.object(ofType: ContactDBModel.self, forPrimaryKey: contactJid) {
-                try! realm.write {
+                try? realm.write {
                     contact.avatar = avatar
                     
                     completion(contact.avatar, nil)
                 }
             } else {
-                try! realm.write {
+                try? realm.write {
                     let contact = ContactDBModel()
                     contact.jid = contactJid
                     
@@ -192,7 +210,9 @@ class ContactStorageManager: ContactStorage {
     }
     
     func getName(contactJid: String) -> String? {
-        let realm = try! Realm(configuration: self.realmConfig)
+        guard let realm = try? Realm(configuration: self.realmConfig) else {
+            return nil
+        }
         
         let contact = realm.object(ofType: ContactDBModel.self, forPrimaryKey: contactJid)
         
@@ -200,7 +220,9 @@ class ContactStorageManager: ContactStorage {
     }
     
     func getAvatar(contactJid: String) -> Data? {
-        let realm = try! Realm(configuration: self.realmConfig)
+        guard let realm = try? Realm(configuration: self.realmConfig) else {
+            return nil
+        }
         
         let contact = realm.object(ofType: ContactDBModel.self, forPrimaryKey: contactJid)
         

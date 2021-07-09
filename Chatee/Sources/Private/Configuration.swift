@@ -15,10 +15,12 @@ class Configuration {
     private init() {}
     
     var userJID: XMPPJID?
+    var userBareJid: String? {
+        return userJID?.bare
+    }
+
     var hostName: String?
-    var bareJid: String?
     
-    var userJid: String?
     let jidResource = "IOS-\(UIDevice.current.identifierForVendor?.uuidString ?? "/")"
     
 }

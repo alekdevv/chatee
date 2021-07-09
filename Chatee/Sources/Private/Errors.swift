@@ -31,6 +31,8 @@ enum XMPPError: Error {
 }
 
 enum DatabaseError: Error {
+    case databaseAccessFailed
+
     case noRooms
     case noRoomWithId
     case noMessageWithId
@@ -42,6 +44,8 @@ enum DatabaseError: Error {
 
     var localizedDescription: String {
         switch self {
+        case .databaseAccessFailed:
+            return "databaseAccessFailed"
         case .noRooms:
             return "noRooms"
         case .noRoomWithId:
