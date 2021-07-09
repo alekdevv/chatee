@@ -114,3 +114,16 @@ enum FileTransferError: Error {
        }
    }
 }
+
+enum OMEMOBundleError: Error {
+    case unknown
+    case notFound
+    case invalid
+    case keyGeneration
+}
+
+enum OMEMOError: Error {
+    case unknownError
+    case noDevicesForContact
+    case noDevices
+}
