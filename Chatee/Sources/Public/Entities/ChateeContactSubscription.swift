@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum ChateeContactSubscription {
+public enum ChateeContactSubscription: String {
     case none
     case requestReceived
     case requestSent

@@ -14,6 +14,11 @@
 		A48EA80C2696E9D700510E05 /* XMPPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48EA80B2696E9D700510E05 /* XMPPManager.swift */; };
 		A48EA8102697450000510E05 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48EA80F2697450000510E05 /* Configuration.swift */; };
 		A48EA8142697496500510E05 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48EA8132697496500510E05 /* Logger.swift */; };
+		A4C07C20269852D000366946 /* ContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C07C1F269852D000366946 /* ContactsManager.swift */; };
+		A4C07C23269853AE00366946 /* ContactStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C07C22269853AE00366946 /* ContactStorage.swift */; };
+		A4C07C25269853CE00366946 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C07C24269853CE00366946 /* Constant.swift */; };
+		A4C07C282698543600366946 /* ContactDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C07C272698543600366946 /* ContactDBModel.swift */; };
+		A4C07C2A269854AD00366946 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C07C29269854AD00366946 /* Errors.swift */; };
 		A4E294F02695B55E00E46B18 /* Chatee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E294E62695B55D00E46B18 /* Chatee.framework */; };
 		A4E294F52695B55E00E46B18 /* ChateeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E294F42695B55E00E46B18 /* ChateeTests.swift */; };
 		A4E294F72695B55E00E46B18 /* Chatee.h in Headers */ = {isa = PBXBuildFile; fileRef = A4E294E92695B55D00E46B18 /* Chatee.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -38,7 +43,6 @@
 		A4E2953E2695F6D000E46B18 /* ChateeChatState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2953D2695F6D000E46B18 /* ChateeChatState.swift */; };
 		A4E295402695F6DD00E46B18 /* ChateeContactSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2953F2695F6DD00E46B18 /* ChateeContactSubscription.swift */; };
 		A4E295432695F70400E46B18 /* ChateeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E295422695F70400E46B18 /* ChateeError.swift */; };
-		A4E2954C2695F9F800E46B18 /* ConversationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2954B2695F9F800E46B18 /* ConversationDelegate.swift */; };
 		A4E2954E2695FA2000E46B18 /* Chatee+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2954D2695FA2000E46B18 /* Chatee+Delegates.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +90,11 @@
 		A48EA80B2696E9D700510E05 /* XMPPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMPPManager.swift; sourceTree = "<group>"; };
 		A48EA80F2697450000510E05 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		A48EA8132697496500510E05 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		A4C07C1F269852D000366946 /* ContactsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsManager.swift; sourceTree = "<group>"; };
+		A4C07C22269853AE00366946 /* ContactStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactStorage.swift; sourceTree = "<group>"; };
+		A4C07C24269853CE00366946 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		A4C07C272698543600366946 /* ContactDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDBModel.swift; sourceTree = "<group>"; };
+		A4C07C29269854AD00366946 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		A4E294E62695B55D00E46B18 /* Chatee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Chatee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E294E92695B55D00E46B18 /* Chatee.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chatee.h; sourceTree = "<group>"; };
 		A4E294EA2695B55D00E46B18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -110,7 +119,6 @@
 		A4E2953D2695F6D000E46B18 /* ChateeChatState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChateeChatState.swift; sourceTree = "<group>"; };
 		A4E2953F2695F6DD00E46B18 /* ChateeContactSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChateeContactSubscription.swift; sourceTree = "<group>"; };
 		A4E295422695F70400E46B18 /* ChateeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChateeError.swift; sourceTree = "<group>"; };
-		A4E2954B2695F9F800E46B18 /* ConversationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationDelegate.swift; sourceTree = "<group>"; };
 		A4E2954D2695FA2000E46B18 /* Chatee+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chatee+Delegates.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,12 +148,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A48EA80A2696E9C500510E05 /* Core */ = {
+		A48EA80A2696E9C500510E05 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				A48EA80B2696E9D700510E05 /* XMPPManager.swift */,
+				A4C07C1F269852D000366946 /* ContactsManager.swift */,
 			);
-			path = Core;
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		A4C07C212698533D00366946 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				A4C07C22269853AE00366946 /* ContactStorage.swift */,
+				A4C07C262698542A00366946 /* Models */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		A4C07C262698542A00366946 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A4C07C272698543600366946 /* ContactDBModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		A4E294DC2695B55D00E46B18 = {
@@ -210,10 +235,13 @@
 		A4E295022695F09800E46B18 /* Private */ = {
 			isa = PBXGroup;
 			children = (
-				A4E2954A2695F83F00E46B18 /* Delegates */,
-				A48EA80A2696E9C500510E05 /* Core */,
+				A48EA80B2696E9D700510E05 /* XMPPManager.swift */,
+				A48EA80A2696E9C500510E05 /* Managers */,
+				A4C07C212698533D00366946 /* Storage */,
 				A48EA80F2697450000510E05 /* Configuration.swift */,
 				A48EA8132697496500510E05 /* Logger.swift */,
+				A4C07C29269854AD00366946 /* Errors.swift */,
+				A4C07C24269853CE00366946 /* Constant.swift */,
 			);
 			path = Private;
 			sourceTree = "<group>";
@@ -262,14 +290,6 @@
 				A4E295422695F70400E46B18 /* ChateeError.swift */,
 			);
 			path = Entities;
-			sourceTree = "<group>";
-		};
-		A4E2954A2695F83F00E46B18 /* Delegates */ = {
-			isa = PBXGroup;
-			children = (
-				A4E2954B2695F9F800E46B18 /* ConversationDelegate.swift */,
-			);
-			path = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,20 +439,24 @@
 				A4E295262695F43C00E46B18 /* ChateeProfileDelegate.swift in Sources */,
 				A4E295282695F48100E46B18 /* ChateeConversationDelegate.swift in Sources */,
 				A48EA8102697450000510E05 /* Configuration.swift in Sources */,
+				A4C07C2A269854AD00366946 /* Errors.swift in Sources */,
 				A4E295432695F70400E46B18 /* ChateeError.swift in Sources */,
+				A4C07C282698543600366946 /* ContactDBModel.swift in Sources */,
 				A4E2953A2695F6AB00E46B18 /* ChateeFile.swift in Sources */,
+				A4C07C20269852D000366946 /* ContactsManager.swift in Sources */,
 				A4E295302695F66100E46B18 /* ChateeConversation.swift in Sources */,
 				A4E295242695F40200E46B18 /* Chatee.swift in Sources */,
 				A4E2954E2695FA2000E46B18 /* Chatee+Delegates.swift in Sources */,
 				A48EA80C2696E9D700510E05 /* XMPPManager.swift in Sources */,
 				A4E2952C2695F49D00E46B18 /* ChateeErrorDelegate.swift in Sources */,
 				A4E295402695F6DD00E46B18 /* ChateeContactSubscription.swift in Sources */,
-				A4E2954C2695F9F800E46B18 /* ConversationDelegate.swift in Sources */,
+				A4C07C23269853AE00366946 /* ContactStorage.swift in Sources */,
 				A4E295362695F67F00E46B18 /* ChateeContact.swift in Sources */,
 				A4E2952A2695F49000E46B18 /* ChateeContactsDelegate.swift in Sources */,
 				A48EA8142697496500510E05 /* Logger.swift in Sources */,
 				A4E295382695F69B00E46B18 /* ChateeRecentConversation.swift in Sources */,
 				A4E295322695F66E00E46B18 /* ChateeMessage.swift in Sources */,
+				A4C07C25269853CE00366946 /* Constant.swift in Sources */,
 				A4E2953E2695F6D000E46B18 /* ChateeChatState.swift in Sources */,
 				A4E295342695F67700E46B18 /* ChateeMessageStatus.swift in Sources */,
 			);

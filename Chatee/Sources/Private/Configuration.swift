@@ -20,4 +20,5 @@ class Configuration {
     
     var userJid: String?
     let jidResource = "IOS-\(UIDevice.current.identifierForVendor?.uuidString ?? "/")"
+    
 }

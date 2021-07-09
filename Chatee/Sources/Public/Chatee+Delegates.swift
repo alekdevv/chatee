@@ -10,12 +10,8 @@ import Foundation
 // MARK: - XMPPManagerDelegate
 extension Chatee: XMPPManagerDelegate {
     
-    func xmppManager(loggedIn: Bool) {
+    func xmppManager(_ xmppManager: XMPPManager, loggedIn: Bool) {
         self.chateeProfileDelegate?.chateeProfile(self, loggedIn: loggedIn)
     }
-    
-}
-
-extension Chatee: ConversationDelegate {
     
 }

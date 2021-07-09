@@ -15,7 +15,7 @@ protocol XMPPManagerDelegate: AnyObject {
 
 class XMPPManager {
     
-    weak var xmppManagerDelegate: XMPPManagerDelegate?
+    weak var delegate: XMPPManagerDelegate?
     
     private let xmppStream: XMPPStream
     private let xmppReconnect: XMPPReconnect
@@ -87,6 +87,10 @@ class XMPPManager {
         self.xmppPing.respondsToQueries = true
         self.xmppPing.activate(self.xmppStream)
     }
+    
+    private func setupContactsManager() {
+        
+    }
 
 }
 
@@ -109,7 +113,7 @@ extension XMPPManager: XMPPStreamDelegate {
         Logger.shared.log("xmppStream didNotAuthenticate | error \(error.localName ?? "")", level: .error)
         
 //        self.errorDelegate?.serverError(error: .authenticationError)
-        self.xmppManagerDelegate?.xmppManager(self, loggedIn: false)
+        self.delegate?.xmppManager(self, loggedIn: false)
     }
     
     func xmppStream(_ sender: XMPPStream, willSecureWithSettings settings: NSMutableDictionary) {
@@ -129,8 +133,8 @@ extension XMPPManager: XMPPStreamDelegate {
 //        setupMessagingManager()
 //        setupPresenceManager()
 //        setupVCardManager()
-//        setupContactsManager()
+        setupContactsManager()
 
-        self.xmppManagerDelegate?.xmppManager(self, loggedIn: true)
+        self.delegate?.xmppManager(self, loggedIn: true)
     }
 }
