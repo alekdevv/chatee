@@ -16,14 +16,14 @@ enum SignalEncryptionError: Error {
 /// Performs Signal operations: creating bundle, decryption, encryption. One per account.
 class SignalManager {
     
-    private let signalStorageManager: SignalStorageManager
-    private let signalStorage: SignalStorage
+    let signalStorageManager: SignalStorageManager
+    let signalStorage: SignalStorage
     private let signalContext: SignalContext
     
-    private weak var omemoModule: OMEMOModule?
+    weak var omemoModule: OMEMOModule?
     
     // In OMEMO world the registration ID is used as the device ID
-    private var registrationId: UInt32 {
+    var registrationId: UInt32 {
         return self.signalStorageManager.getLocalRegistrationId()
     }
     
