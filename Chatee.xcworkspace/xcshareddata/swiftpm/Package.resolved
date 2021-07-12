@@ -1,0 +1,79 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CocoaAsyncSocket",
+        "repositoryURL": "https://github.com/robbiehanson/CocoaAsyncSocket.git",
+        "state": {
+          "branch": null,
+          "revision": "dbdc00669c1ced63b27c3c5f052ee4d28f10150c",
+          "version": "7.6.5"
+        }
+      },
+      {
+        "package": "CocoaLumberjack",
+        "repositoryURL": "https://github.com/CocoaLumberjack/CocoaLumberjack.git",
+        "state": {
+          "branch": null,
+          "revision": "e518eb6e362df327574ba5e04269cd6d29f40aec",
+          "version": "3.7.2"
+        }
+      },
+      {
+        "package": "KissXML",
+        "repositoryURL": "https://github.com/robbiehanson/KissXML.git",
+        "state": {
+          "branch": null,
+          "revision": "990cdef080213b5a3f0d9709b845d553bd3ddb97",
+          "version": "5.3.3"
+        }
+      },
+      {
+        "package": "libidn",
+        "repositoryURL": "https://github.com/chrisballinger/libidn-framework.git",
+        "state": {
+          "branch": null,
+          "revision": "fc2700ce83a279ac121aa9f59eedacfadd24ab5b",
+          "version": "1.35.1"
+        }
+      },
+      {
+        "package": "Realm",
+        "repositoryURL": "https://github.com/realm/realm-cocoa.git",
+        "state": {
+          "branch": null,
+          "revision": "628c59a9048aae3b6bcf129ba56216dbe3dce808",
+          "version": "10.9.0"
+        }
+      },
+      {
+        "package": "RealmDatabase",
+        "repositoryURL": "https://github.com/realm/realm-core",
+        "state": {
+          "branch": null,
+          "revision": "95da0df7815d7cbaff14ed5e8b73fe4c2a992816",
+          "version": "11.0.4"
+        }
+      },
+      {
+        "package": "swift-log",
+        "repositoryURL": "https://github.com/apple/swift-log.git",
+        "state": {
+          "branch": null,
+          "revision": "5d66f7ba25daf4f94100e7022febf3c75e37a6c7",
+          "version": "1.4.2"
+        }
+      },
+      {
+        "package": "XMPPFramework",
+        "repositoryURL": "https://github.com/robbiehanson/XMPPFramework.git",
+        "state": {
+          "branch": null,
+          "revision": "76969d13e84a9b04359b761a5b49f3ccdbef6794",
+          "version": "4.1.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

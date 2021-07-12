@@ -32,6 +32,8 @@
 		A4C07C4226985F0000366946 /* RoomDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C07C4126985F0000366946 /* RoomDBModel.swift */; };
 		A4C07C4426985F3500366946 /* MessageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C07C4326985F3500366946 /* MessageStorage.swift */; };
 		A4C07C462698601F00366946 /* OutgoingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C07C452698601F00366946 /* OutgoingMessage.swift */; };
+		A4C07C482698622000366946 /* VCardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C07C472698622000366946 /* VCardManager.swift */; };
+		A4C07C4A2698622D00366946 /* OmemoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C07C492698622D00366946 /* OmemoManager.swift */; };
 		A4E294F02695B55E00E46B18 /* Chatee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E294E62695B55D00E46B18 /* Chatee.framework */; };
 		A4E294F52695B55E00E46B18 /* ChateeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E294F42695B55E00E46B18 /* ChateeTests.swift */; };
 		A4E294F72695B55E00E46B18 /* Chatee.h in Headers */ = {isa = PBXBuildFile; fileRef = A4E294E92695B55D00E46B18 /* Chatee.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -39,8 +41,6 @@
 		A4E295072695F15B00E46B18 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A4E295062695F15B00E46B18 /* RealmSwift */; };
 		A4E2950A2695F18900E46B18 /* XMPPFramework in Frameworks */ = {isa = PBXBuildFile; productRef = A4E295092695F18900E46B18 /* XMPPFramework */; };
 		A4E2950C2695F18900E46B18 /* XMPPFrameworkSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A4E2950B2695F18900E46B18 /* XMPPFrameworkSwift */; };
-		A4E295202695F38900E46B18 /* OTRKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E2951F2695F37F00E46B18 /* OTRKit.framework */; };
-		A4E295212695F38900E46B18 /* OTRKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A4E2951F2695F37F00E46B18 /* OTRKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A4E295242695F40200E46B18 /* Chatee.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E295232695F40200E46B18 /* Chatee.swift */; };
 		A4E295262695F43C00E46B18 /* ChateeProfileDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E295252695F43C00E46B18 /* ChateeProfileDelegate.swift */; };
 		A4E295282695F48100E46B18 /* ChateeConversationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E295272695F48100E46B18 /* ChateeConversationDelegate.swift */; };
@@ -67,20 +67,6 @@
 			remoteGlobalIDString = A4E294E52695B55D00E46B18;
 			remoteInfo = Chatee;
 		};
-		A4E2951C2695F37F00E46B18 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A4E295172695F37F00E46B18 /* OTRKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D96A69CC235BB43E006FF925;
-			remoteInfo = "OTRKit (macOS)";
-		};
-		A4E2951E2695F37F00E46B18 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A4E295172695F37F00E46B18 /* OTRKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D96A6A35235BB83B006FF925;
-			remoteInfo = "OTRKit (iOS)";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -92,7 +78,6 @@
 			files = (
 				A48EA8042696E6D200510E05 /* SignalProtocolC.framework in Embed Frameworks */,
 				A48EA8082696E6D400510E05 /* SignalProtocolObjC.framework in Embed Frameworks */,
-				A4E295212695F38900E46B18 /* OTRKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,6 +106,8 @@
 		A4C07C4126985F0000366946 /* RoomDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDBModel.swift; sourceTree = "<group>"; };
 		A4C07C4326985F3500366946 /* MessageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStorage.swift; sourceTree = "<group>"; };
 		A4C07C452698601F00366946 /* OutgoingMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingMessage.swift; sourceTree = "<group>"; };
+		A4C07C472698622000366946 /* VCardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCardManager.swift; sourceTree = "<group>"; };
+		A4C07C492698622D00366946 /* OmemoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmemoManager.swift; sourceTree = "<group>"; };
 		A4E294E62695B55D00E46B18 /* Chatee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Chatee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E294E92695B55D00E46B18 /* Chatee.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chatee.h; sourceTree = "<group>"; };
 		A4E294EA2695B55D00E46B18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -129,7 +116,6 @@
 		A4E294F62695B55E00E46B18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4E2950E2695F1F100E46B18 /* SignalProtocolObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SignalProtocolObjC.framework; path = Carthage/Build/iOS/SignalProtocolObjC.framework; sourceTree = "<group>"; };
 		A4E2950F2695F1F100E46B18 /* SignalProtocolC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SignalProtocolC.framework; path = Carthage/Build/iOS/SignalProtocolC.framework; sourceTree = "<group>"; };
-		A4E295172695F37F00E46B18 /* OTRKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OTRKit.xcodeproj; path = OTRKit/OTRKit.xcodeproj; sourceTree = "<group>"; };
 		A4E295232695F40200E46B18 /* Chatee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatee.swift; sourceTree = "<group>"; };
 		A4E295252695F43C00E46B18 /* ChateeProfileDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChateeProfileDelegate.swift; sourceTree = "<group>"; };
 		A4E295272695F48100E46B18 /* ChateeConversationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChateeConversationDelegate.swift; sourceTree = "<group>"; };
@@ -153,7 +139,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4E295202695F38900E46B18 /* OTRKit.framework in Frameworks */,
 				A4E2950A2695F18900E46B18 /* XMPPFramework in Frameworks */,
 				A48EA8072696E6D400510E05 /* SignalProtocolObjC.framework in Frameworks */,
 				A4E295072695F15B00E46B18 /* RealmSwift in Frameworks */,
@@ -178,6 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				A4C07C1F269852D000366946 /* ContactsManager.swift */,
+				A4C07C492698622D00366946 /* OmemoManager.swift */,
+				A4C07C472698622000366946 /* VCardManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -230,7 +217,6 @@
 		A4E294DC2695B55D00E46B18 = {
 			isa = PBXGroup;
 			children = (
-				A4E295172695F37F00E46B18 /* OTRKit.xcodeproj */,
 				A4E294E82695B55D00E46B18 /* Chatee */,
 				A4E294F32695B55E00E46B18 /* ChateeTests */,
 				A4E294E72695B55D00E46B18 /* Products */,
@@ -308,15 +294,6 @@
 				A4E2950E2695F1F100E46B18 /* SignalProtocolObjC.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A4E295182695F37F00E46B18 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A4E2951D2695F37F00E46B18 /* OTRKit.framework */,
-				A4E2951F2695F37F00E46B18 /* OTRKit.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		A4E2952D2695F62200E46B18 /* Delegates */ = {
@@ -437,12 +414,6 @@
 			);
 			productRefGroup = A4E294E72695B55D00E46B18 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = A4E295182695F37F00E46B18 /* Products */;
-					ProjectRef = A4E295172695F37F00E46B18 /* OTRKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				A4E294E52695B55D00E46B18 /* Chatee */,
@@ -450,23 +421,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		A4E2951D2695F37F00E46B18 /* OTRKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OTRKit.framework;
-			remoteRef = A4E2951C2695F37F00E46B18 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A4E2951F2695F37F00E46B18 /* OTRKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OTRKit.framework;
-			remoteRef = A4E2951E2695F37F00E46B18 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		A4E294E42695B55D00E46B18 /* Resources */ = {
@@ -497,9 +451,11 @@
 				A4C07C4026985EE000366946 /* MessageDBModel.swift in Sources */,
 				A4E295262695F43C00E46B18 /* ChateeProfileDelegate.swift in Sources */,
 				A4E295282695F48100E46B18 /* ChateeConversationDelegate.swift in Sources */,
+				A4C07C4A2698622D00366946 /* OmemoManager.swift in Sources */,
 				A48EA8102697450000510E05 /* Configuration.swift in Sources */,
 				A4C07C2A269854AD00366946 /* Errors.swift in Sources */,
 				A4E295432695F70400E46B18 /* ChateeError.swift in Sources */,
+				A4C07C482698622000366946 /* VCardManager.swift in Sources */,
 				A4C07C282698543600366946 /* ContactDBModel.swift in Sources */,
 				A4C07C3E26985E0700366946 /* Omemo+Extension.swift in Sources */,
 				A4E2953A2695F6AB00E46B18 /* ChateeFile.swift in Sources */,
