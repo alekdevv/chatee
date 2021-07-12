@@ -35,6 +35,7 @@
 		A4C07C482698622000366946 /* VCardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C07C472698622000366946 /* VCardManager.swift */; };
 		A4C07C4A2698622D00366946 /* OmemoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C07C492698622D00366946 /* OmemoManager.swift */; };
 		A4CCE0ED269C6E250022B220 /* KeyGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CCE0EC269C6E250022B220 /* KeyGenerator.swift */; };
+		A4CCE0EF269C6E680022B220 /* SignalHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CCE0EE269C6E680022B220 /* SignalHelper.swift */; };
 		A4E294F02695B55E00E46B18 /* Chatee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E294E62695B55D00E46B18 /* Chatee.framework */; };
 		A4E294F52695B55E00E46B18 /* ChateeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E294F42695B55E00E46B18 /* ChateeTests.swift */; };
 		A4E294F72695B55E00E46B18 /* Chatee.h in Headers */ = {isa = PBXBuildFile; fileRef = A4E294E92695B55D00E46B18 /* Chatee.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -110,6 +111,7 @@
 		A4C07C472698622000366946 /* VCardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCardManager.swift; sourceTree = "<group>"; };
 		A4C07C492698622D00366946 /* OmemoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmemoManager.swift; sourceTree = "<group>"; };
 		A4CCE0EC269C6E250022B220 /* KeyGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyGenerator.swift; sourceTree = "<group>"; };
+		A4CCE0EE269C6E680022B220 /* SignalHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalHelper.swift; sourceTree = "<group>"; };
 		A4E294E62695B55D00E46B18 /* Chatee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Chatee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E294E92695B55D00E46B18 /* Chatee.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chatee.h; sourceTree = "<group>"; };
 		A4E294EA2695B55D00E46B18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				A48EA8132697496500510E05 /* Logger.swift */,
 				A4C07C24269853CE00366946 /* Constant.swift */,
 				A4CCE0EC269C6E250022B220 /* KeyGenerator.swift */,
+				A4CCE0EE269C6E680022B220 /* SignalHelper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 				A4C07C342698594E00366946 /* SignalIdentityDBModel.swift in Sources */,
 				A4C07C382698597700366946 /* PreKeyDBModel.swift in Sources */,
 				A4E295302695F66100E46B18 /* ChateeConversation.swift in Sources */,
+				A4CCE0EF269C6E680022B220 /* SignalHelper.swift in Sources */,
 				A4E295242695F40200E46B18 /* Chatee.swift in Sources */,
 				A4E2954E2695FA2000E46B18 /* Chatee+Delegates.swift in Sources */,
 				A48EA80C2696E9D700510E05 /* XMPPManager.swift in Sources */,
