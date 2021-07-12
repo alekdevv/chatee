@@ -19,12 +19,16 @@ protocol ContactManagerDelegate: AnyObject {
     func contactManager(_ contactManager: ContactManager, didReceiveSubscriptionRequest subscriptionRequest: ChateeContact)
     func contactManager(_ contactManager: ContactManager, didSendSubscriptionRequest subscriptionRequest: ChateeContact)
     
+    func contactManager(_ contactManager: ContactManager, didReceivePresenceStatus presenceStatus: ChateePresenceStatus, fromContactBareJid contactBareJid: String)
+    /// lastActivity represented in seconds
+    func contactManager(_ contactManager: ContactManager, didReceiveContactLastActivity lastActivity: Int, fromContactBareJid contactBareJid: String)
+
     func contactManager(_ contactManager: ContactManager, errorOcurred error: ChateeError)
 }
 
 private let workQueue = DispatchQueue(label: "contactsManagerWorkQueue")
 
-class ContactManager {
+class ContactManager: NSObject {
     
     weak var delegate: ContactManagerDelegate?
     
@@ -38,6 +42,8 @@ class ContactManager {
     private let omemoManager: OmemoManager
     
     private let contactStorage: ContactStorage
+    
+    private var initialRosterLoaded = false
 
     init(xmppStream: XMPPStream, userJID: XMPPJID, vCardManager: VCardManager, omemoManager: OmemoManager) {
         self.xmppStream = xmppStream
@@ -51,6 +57,8 @@ class ContactManager {
         self.xmppLastActivity = XMPPLastActivity()
         
         self.contactStorage = ContactStorageManager()
+        
+        super.init()
         
         self.xmppStream.addDelegate(self, delegateQueue: workQueue)
 
@@ -258,5 +266,134 @@ class ContactManager {
         }
     }
 
-
 }
+
+// MARK: - XMPPStreamDelegate
+
+extension ContactManager: XMPPStreamDelegate {
+    
+    func xmppStream(_ sender: XMPPStream, didReceive presence: XMPPPresence) {
+        guard let fromBareJID = presence.from else { return }
+        
+        if presence.type == "unsubscribed" {
+            Logger.shared.log("xmppStream didReceive presence | from: \(fromBareJID), unsubscribed (ContactsManager)", level: .verbose)
+
+            self.xmppRoster.removeUser(fromBareJID)
+        } else if presence.type == "subscribe" {
+            Logger.shared.log("xmppStream didReceive presence | from: \(fromBareJID), subscribe (ContactsManager)", level: .verbose)
+
+            let contact = ChateeContact(jid: fromBareJID.bare, subscription: .requestReceived)
+
+            self.addContact(contact: contact)
+        } else if presence.type == "unavailable" {
+            Logger.shared.log("xmppStream didReceive presence | from: \(fromBareJID), unavailable (ContactsManager)", level: .verbose)
+            
+            self.delegate?.contactManager(self, didReceivePresenceStatus: .offline, fromContactBareJid: fromBareJID.bare)
+        } else if presence.show == "away" {
+            Logger.shared.log("xmppStream didReceive presence | from: \(fromBareJID), away (ContactsManager)", level: .verbose)
+
+            self.delegate?.contactManager(self, didReceivePresenceStatus: .away, fromContactBareJid: fromBareJID.bare)
+        } else {
+            Logger.shared.log("xmppStream didReceive presence | from: \(fromBareJID), presence: \(presence) (ContactsManager)", level: .verbose)
+
+            self.delegate?.contactManager(self, didReceivePresenceStatus: .online, fromContactBareJid: fromBareJID.bare)
+        }
+    }
+    
+}
+
+// MARK: - XMPPRosterDelegate
+
+extension ContactManager: XMPPRosterDelegate {
+    
+    func xmppRoster(_ sender: XMPPRoster, didReceiveRosterItem item: DDXMLElement) {
+        guard let jidString = item.attribute(forName: "jid")?.stringValue else { return }
+        
+        Logger.shared.log("xmppRoster didReceiveRosterItem | item jid \(jidString)", level: .verbose)
+        
+        if item.attribute(forName: "ask")?.stringValue != nil {
+            Logger.shared.log("xmppRoster didReceiveRosterItem | \(jidString), adding contact to database as `requestSent` subscription type.", level: .verbose)
+
+            let contact = ChateeContact(jid: jidString, subscription: .requestSent)
+
+            addContact(contact: contact)
+        } else if let subscriptionAttribute = item.attribute(forName: "subscription")?.stringValue {
+            if subscriptionAttribute == "remove" {
+                Logger.shared.log("xmppRoster didReceiveRosterItem | \(jidString), removing contact from the database.", level: .verbose)
+
+                let contact = ChateeContact(jid: jidString, subscription: .none)
+                
+                removeContact(contact: contact)
+            }
+            
+            if subscriptionAttribute == "both" {
+                Logger.shared.log("xmppRoster didReceiveRosterItem | \(jidString), adding contact to database as `both` subscription type.", level: .verbose)
+
+                let contact = ChateeContact(jid: jidString, subscription: .both)
+
+                addContact(contact: contact)
+            }
+        }
+    }
+    
+    func xmppRosterDidEndPopulating(_ sender: XMPPRoster) {
+        Logger.shared.log("xmppRosterDidEndPopulating", level: .verbose)
+
+        loadContacts(subscriptionType: .both)
+        loadContacts(subscriptionType: .requestReceived)
+        loadContacts(subscriptionType: .requestSent)
+        
+        initialRosterLoaded = true
+    }
+    
+    // Show notification if you want and deal with received sub request.
+    func xmppRoster(_ sender: XMPPRoster, didReceivePresenceSubscriptionRequest presence: XMPPPresence) {
+        Logger.shared.log("xmppRoster didReceivePresenceSubscriptionRequest presence | From: \(String(describing: presence.from))", level: .verbose)
+        
+        guard let userJID = presence.from else { return }
+        
+        let contact = ChateeContact(jid: userJID.bare, subscription: .requestReceived)
+
+        addContact(contact: contact)
+    }
+    
+}
+
+// MARK: - XMPPLastActivityDelegate
+
+extension ContactManager: XMPPLastActivityDelegate {
+    
+    // Protocol method. Purpose unknown. Has to be implemented.
+    func numberOfIdleTimeSeconds(for sender: XMPPLastActivity!, queryIQ iq: XMPPIQ!, currentIdleTimeSeconds idleSeconds: UInt) -> UInt {
+        return 0
+    }
+    
+    func xmppLastActivity(_ sender: XMPPLastActivity!, didNotReceiveResponse queryID: String!, dueToTimeout timeout: TimeInterval) {
+        Logger.shared.log("xmppLastActivity didNotReceiveResponse queryID | \(queryID ?? "")", level: .verbose)
+    }
+    
+    func xmppLastActivity(_ sender: XMPPLastActivity!, didReceiveResponse response: XMPPIQ!) {
+        guard let fromJID = response.from else { return }
+        
+        let seconds = response.lastActivitySeconds()
+
+        // When user is removed from the roster, server sometimes respond with a bad last activity.
+        // 9223372036854775807 seconds is too big for last activity, so user is removed.
+        guard seconds < 9223372036854775807 else {
+            Logger.shared.log("xmppLastActivity didReceiveResponse response | Should be removed: \(fromJID)", level: .verbose)
+
+            self.xmppRoster.removeUser(fromJID)
+            
+            let contact = ChateeContact(jid: fromJID.bare, subscription: .none)
+            
+            removeContact(contact: contact)
+            
+            return
+        }
+        
+        Logger.shared.log("xmppLastActivity didReceiveResponse response | Last activity from: \(fromJID), seconds ago: \(seconds)", level: .verbose)
+        
+        self.delegate?.contactManager(self, didReceiveContactLastActivity: Int(seconds), fromContactBareJid: fromJID.bare)
+    }
+}
+
