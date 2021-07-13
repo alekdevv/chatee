@@ -31,7 +31,7 @@ final class MessagingManager: NSObject {
     private let userJID: XMPPJID
     
     private let omemoManager: OmemoManager
-//    private let fileTransferManager: FileTransferManager
+    private let fileTransferManager: FileTransferManager
     
     private let messageStorage: MessageStorage
     
@@ -41,7 +41,7 @@ final class MessagingManager: NSObject {
         self.xmppStream = xmppStream
         self.userJID = userJID
         self.omemoManager = omemoManager
-//        self.fileTransferManager = FileTransferManager(xmppStream: self.xmppStream, hostName: hostName)
+        self.fileTransferManager = FileTransferManager(xmppStream: self.xmppStream, hostName: hostName)
         self.messageStorage = messageStorage
         
         self.xmppDeliveryReceipts = XMPPMessageDeliveryReceipts()
@@ -113,49 +113,49 @@ final class MessagingManager: NSObject {
     func sendFile(messageID: String, text: String = "", data: Data, to jidString: String, shouldEncrypt: Bool) {
         Logger.shared.log("sendFile called", level: .verbose)
         
-//        guard let toJID = XMPPJID(string: jidString) else { return }
+        guard let toJID = XMPPJID(string: jidString) else { return }
 
-//        TODO: FileTransferManager
-//        self.fileTransferManager.send(data: data, contentType: "image/jpeg", shouldEncrypt: shouldEncrypt) { [weak self] url, error in
-//            guard let url = url else {
-//                return
-//            }
-//
-//            Logger.shared.log("File successfully uploaded, url location: \(url)", level: .verbose)
-//
-//            let jsonObject: [String: Any] = [
-//                "type": "file_url",
-//                "text": text,
-//                "url": "\(url)"
-//            ]
-//
-//            guard JSONSerialization.isValidJSONObject(jsonObject),
-//                  let data = try? JSONSerialization.data(withJSONObject: jsonObject, options: JSONSerialization.WritingOptions.prettyPrinted),
-//                  let jsonString = String(data: data, encoding: String.Encoding.utf8) else {
-//
-//                Logger.shared.log("sendFile json error", level: .error)
-//
-//                return
-//            }
-//
-//            Logger.shared.log("sendFile file message successfully formatted", level: .verbose)
-//
-//            if !shouldEncrypt {
-//                let xmppMessage = XMPPMessage(type: "chat", to: toJID)
-//                xmppMessage.addBody(jsonString)
-//                xmppMessage.addOriginId(messageID)
-//
-//                self?.xmppStream.send(xmppMessage)
-//            } else {
-//                self?.omemoManager.encryptAndSendMessage(OutgoingMessage(remoteMessageId: messageID, messageText: jsonString, toJid: jidString)) { [weak self] (success, error) in
-//                    Logger.shared.log("encryptAndSendFileMessage callback: \(success)", level: .verbose)
-//
-//                    if !success {
-//                        self?.errorDelegate?.encryptionError(error: .failedToEncrypt(messageId: messageID))
-//                    }
-//                }
-//            }
-//        }
+        self.fileTransferManager.send(data: data, contentType: "image/jpeg", shouldEncrypt: shouldEncrypt) { [weak self] url, error in
+            guard let url = url, let self = self else {
+                return
+            }
+
+            Logger.shared.log("File successfully uploaded, url location: \(url)", level: .verbose)
+
+            let jsonObject: [String: Any] = [
+                "type": "file_url",
+                "text": text,
+                "url": "\(url)"
+            ]
+
+            guard JSONSerialization.isValidJSONObject(jsonObject),
+                  let data = try? JSONSerialization.data(withJSONObject: jsonObject, options: JSONSerialization.WritingOptions.prettyPrinted),
+                  let jsonString = String(data: data, encoding: String.Encoding.utf8) else {
+
+                Logger.shared.log("sendFile json error", level: .error)
+
+                return
+            }
+
+            Logger.shared.log("sendFile file message successfully formatted", level: .verbose)
+
+            if !shouldEncrypt {
+                let xmppMessage = XMPPMessage(type: "chat", to: toJID)
+                xmppMessage.addBody(jsonString)
+                xmppMessage.addOriginId(messageID)
+
+                self.xmppStream.send(xmppMessage)
+            } else {
+                self.omemoManager.encryptAndSendMessage(OutgoingMessage(remoteMessageId: messageID, messageText: jsonString, toJid: jidString)) { [weak self] (success, error) in
+                    guard let self = self else { return }
+                    Logger.shared.log("encryptAndSendFileMessage callback: \(success)", level: .verbose)
+
+                    if !success {
+                        self.delegate?.messagingManager(self, errorOccurred: .encryption) // encryptionError(error: .failedToEncrypt(messageId: messageID))
+                    }
+                }
+            }
+        }
     }
     
     func forceSendOutgoingMessages(shouldEncrypt: Bool = true) {
@@ -252,14 +252,13 @@ final class MessagingManager: NSObject {
     private func saveFileMessage(_ message: XMPPMessage, fileUrl: URL, date: Date, status: ChateeMessageStatus) {
         Logger.shared.log("saveFileMessage called", level: .verbose)
         
-//        TODO: FileTransferManager
-//        self.fileTransferManager.download(url: fileUrl) { [weak self] localFileUrl, error in
-//            guard let localFileUrl = localFileUrl else {
-//                return
-//            }
-//
-//            self?.saveMessage(message, fileUrl: localFileUrl.absoluteString, date: Date(), status: status)
-//        }
+        self.fileTransferManager.download(url: fileUrl) { [weak self] localFileUrl, error in
+            guard let localFileUrl = localFileUrl else {
+                return
+            }
+
+            self?.saveMessage(message, fileUrl: localFileUrl.absoluteString, date: Date(), status: status)
+        }
     }
     
     private func saveMessage(_ message: XMPPMessage, fileUrl: String?, date: Date, status: ChateeMessageStatus) {
