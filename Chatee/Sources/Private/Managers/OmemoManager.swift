@@ -619,7 +619,7 @@ extension OmemoManager: OMEMOModuleDelegate {
                 
                 result = true
             } catch {
-//                DDLogWarn("Error consuming incoming bundle: \(err) \(responseIq.prettyXMLString())")
+
             }
             
             self?.callAndRemoveOutstandingBundleBlock(elementId!, success: result)

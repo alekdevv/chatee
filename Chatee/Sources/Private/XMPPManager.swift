@@ -10,7 +10,7 @@ import XMPPFramework
 import XMPPFrameworkSwift
 
 protocol XMPPManagerDelegate: AnyObject {
-    func xmppManager(_ xmppManager: XMPPManager, loggedIn: Bool)
+    func xmppManager(_ xmppManager: XMPPManager, didAuthenticate: Bool)
 }
 
 class XMPPManager {
@@ -113,7 +113,7 @@ extension XMPPManager: XMPPStreamDelegate {
         Logger.shared.log("xmppStream didNotAuthenticate | error \(error.localName ?? "")", level: .error)
         
 //        self.errorDelegate?.serverError(error: .authenticationError)
-        self.delegate?.xmppManager(self, loggedIn: false)
+        self.delegate?.xmppManager(self, didAuthenticate: false)
     }
     
     func xmppStream(_ sender: XMPPStream, willSecureWithSettings settings: NSMutableDictionary) {
@@ -135,6 +135,6 @@ extension XMPPManager: XMPPStreamDelegate {
 //        setupVCardManager()
         setupContactsManager()
 
-        self.delegate?.xmppManager(self, loggedIn: true)
+        self.delegate?.xmppManager(self, didAuthenticate: true)
     }
 }

@@ -103,7 +103,7 @@ class MessageStorageManager: MessageStorage {
             let messagesList = Array(room.messages.sorted(byKeyPath: "timestamp", ascending: true).suffix(70))
             let messages = ChateeMessage.convert(dbMessages: messagesList)
             
-            let conversationModel = ChateeConversation(name: roomName, messages: messages)
+            let conversationModel = ChateeConversation(roomID: roomID, name: roomName, messages: messages)
             
             completion(conversationModel, nil)
         }

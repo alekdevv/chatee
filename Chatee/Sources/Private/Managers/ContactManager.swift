@@ -23,7 +23,7 @@ protocol ContactManagerDelegate: AnyObject {
     /// lastActivity represented in seconds
     func contactManager(_ contactManager: ContactManager, didReceiveContactLastActivity lastActivity: Int, fromContactBareJid contactBareJid: String)
 
-    func contactManager(_ contactManager: ContactManager, errorOcurred error: ChateeError)
+    func contactManager(_ contactManager: ContactManager, errorOccurred error: ChateeError)
 }
 
 private let workQueue = DispatchQueue(label: "contactsManagerWorkQueue")
@@ -45,18 +45,19 @@ class ContactManager: NSObject {
     
     private var initialRosterLoaded = false
 
-    init(xmppStream: XMPPStream, userJID: XMPPJID, vCardManager: VCardManager, omemoManager: OmemoManager) {
+    init(xmppStream: XMPPStream, userJID: XMPPJID, vCardManager: VCardManager, omemoManager: OmemoManager, contactStorage: ContactStorage = ContactStorageManager()) {
         self.xmppStream = xmppStream
 
         self.userJID = userJID
         self.vCardManager = vCardManager
         self.omemoManager = omemoManager
         
+        self.contactStorage = contactStorage
+
         self.xmppRosterStorage = XMPPRosterCoreDataStorage.sharedInstance()
         self.xmppRoster = XMPPRoster(rosterStorage: self.xmppRosterStorage)
         self.xmppLastActivity = XMPPLastActivity()
         
-        self.contactStorage = ContactStorageManager()
         
         super.init()
         
@@ -95,7 +96,7 @@ class ContactManager: NSObject {
             if let error = error {
                 Logger.shared.log("addConntact error: \(error.localizedDescription), jid: \(contact.jid)", level: .error)
 
-                self.delegate?.contactManager(self, errorOcurred: .database)
+                self.delegate?.contactManager(self, errorOccurred: .database)
             } else if let savedContact = savedContact {
                 Logger.shared.log("\(savedContact.jid), contact saved to the database.", level: .verbose)
                 
@@ -125,7 +126,7 @@ class ContactManager: NSObject {
             if let error = error {
                 Logger.shared.log("removeContact error: \(error.localizedDescription), jid: \(contact.jid)", level: .error)
 
-                self.delegate?.contactManager(self, errorOcurred: .database)
+                self.delegate?.contactManager(self, errorOccurred: .database)
             } else if let removedContact = removedContact {
                 Logger.shared.log("\(contact.jid), contact removed from the database.", level: .verbose)
 
@@ -143,7 +144,7 @@ class ContactManager: NSObject {
             if let error = error {
                 Logger.shared.log("loadContacts error: \(error.localizedDescription)", level: .error)
                 
-                self.delegate?.contactManager(self, errorOcurred: .database)
+                self.delegate?.contactManager(self, errorOccurred: .database)
             } else {
                 switch subscriptionType {
                 case .both:
@@ -182,7 +183,7 @@ class ContactManager: NSObject {
             if let error = error {
                 Logger.shared.log("sendPresenceProbesForSubscribedContacts error: \(error.localizedDescription)", level: .error)
 
-                self.delegate?.contactManager(self, errorOcurred: .database)
+                self.delegate?.contactManager(self, errorOccurred: .database)
             } else {
                 self.sendPresenceProbes(contacts: contacts)
             }
@@ -236,7 +237,7 @@ class ContactManager: NSObject {
             if let error = error {
                 Logger.shared.log("acceptSubscription error: \(error.localizedDescription)", level: .error)
 
-                self.delegate?.contactManager(self, errorOcurred: .database)
+                self.delegate?.contactManager(self, errorOccurred: .database)
             } else if let contact = contact {
                 Logger.shared.log("Subscription accepted: \(contact.jid)", level: .verbose)
 
@@ -258,7 +259,7 @@ class ContactManager: NSObject {
             if let error = error {
                 Logger.shared.log("rejectSubscription error: \(error.localizedDescription)", level: .error)
 
-                self.delegate?.contactManager(self, errorOcurred: .database)
+                self.delegate?.contactManager(self, errorOccurred: .database)
             } else if success {
                 // Display
                 Logger.shared.log("Subscription rejected: \(senderJID)", level: .verbose)

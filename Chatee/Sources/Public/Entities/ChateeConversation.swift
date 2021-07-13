@@ -8,6 +8,7 @@
 import Foundation
 
 public struct ChateeConversation {
+    public let roomID: String
     public let name: String
     public let messages: [ChateeMessage]
 }
