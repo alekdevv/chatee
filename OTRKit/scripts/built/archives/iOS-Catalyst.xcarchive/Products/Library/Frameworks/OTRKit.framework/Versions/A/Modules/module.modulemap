@@ -1,6 +1,0 @@
-framework module OTRKit {
-  umbrella header "OTRKit.h"
-
-  export *
-  module * { export * }
-}
