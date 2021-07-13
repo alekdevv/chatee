@@ -41,6 +41,21 @@ extension Chatee {
         }
         
         self.xmppManager.disconnect()
-    }    
+    }
+    
+    /// Used to send presence to the server.
+    /// - Parameters:
+    ///     - presenceStatus: Current presence status.
+    public func sendPresenceStatus(_ presenceStatus: ChateePresenceStatus) {
+        guard self.xmppManager.isAuthenticated else {
+            return
+        }
+        
+        guard let presenceManager = self.presenceManager else {
+            return
+        }
+        
+        presenceManager.sendPresenceStatus(presenceStatus)
+    }
 
 }
