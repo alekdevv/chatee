@@ -13,7 +13,7 @@ protocol XMPPManagerDelegate: AnyObject {
     func xmppManager(_ xmppManager: XMPPManager, didAuthenticate: Bool)
 }
 
-class XMPPManager {
+final class XMPPManager {
     
     weak var delegate: XMPPManagerDelegate?
     

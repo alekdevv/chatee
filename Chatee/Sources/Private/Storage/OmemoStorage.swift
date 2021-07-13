@@ -11,7 +11,7 @@ import Realm
 
 private let omemoWorkQueue = DispatchQueue(label: "omemoWorkQueue")
 
-class OmemoStorageManager {
+final class OmemoStorageManager {
     
     private lazy var realmConfig: Realm.Configuration = {
         let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)

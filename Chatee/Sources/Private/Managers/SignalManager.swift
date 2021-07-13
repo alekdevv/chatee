@@ -14,7 +14,7 @@ enum SignalEncryptionError: Error {
 }
 
 /// Performs Signal operations: creating bundle, decryption, encryption. One per account.
-class SignalManager {
+final class SignalManager {
     
     let signalStorageManager: SignalStorageManager
     let signalStorage: SignalStorage

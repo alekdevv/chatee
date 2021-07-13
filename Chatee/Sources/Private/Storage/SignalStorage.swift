@@ -14,7 +14,7 @@ import XMPPFramework
 private let signalWorkQueue = DispatchQueue(label: "signalWorkQueue")
 
 /// All Signal related database methods are on the main thread! Signal third party library is using them without callbacks!
-class SignalStorageManager: NSObject, SignalStore {
+final class SignalStorageManager: NSObject, SignalStore {
     
     private lazy var realmConfig: Realm.Configuration = {
         let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)

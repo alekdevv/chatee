@@ -19,7 +19,7 @@ protocol MessagingManagerDelegate: AnyObject {
     func messagingManager(_ messagingManager: MessagingManager, errorOccurred error: ChateeError)
 }
 
-class MessagingManager: NSObject {
+final class MessagingManager: NSObject {
     
     weak var delegate: MessagingManagerDelegate?
     

@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class OmemoDeviceDBModel: Object {
+final class OmemoDeviceDBModel: Object {
     
     @objc dynamic var id = 0
     @objc dynamic var userJid = ""

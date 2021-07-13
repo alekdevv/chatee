@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class SignalIdentityDBModel: Object {
+final class SignalIdentityDBModel: Object {
     
     @objc dynamic var privateKey = Data()
     @objc dynamic var publicKey = Data()

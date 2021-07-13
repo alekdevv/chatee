@@ -20,7 +20,7 @@ private let callbackQueue = DispatchQueue(label: "OmemoManager-callbackQueue")
 private let workQueue = DispatchQueue(label: "OmemoManager-workQueue")
 
 /// Performs Omemo operations.
-class OmemoManager: NSObject {
+final class OmemoManager: NSObject {
     
     weak var delegate: OmemoManagerDelegate?
     

@@ -31,7 +31,7 @@ protocol MessageStorage {
 
 private let messageWorkQueue = DispatchQueue(label: "messageWorkQueue")
 
-class MessageStorageManager: MessageStorage {
+final class MessageStorageManager: MessageStorage {
         
     private lazy var realmConfig: Realm.Configuration = {
         let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)

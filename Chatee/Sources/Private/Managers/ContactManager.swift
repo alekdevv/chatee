@@ -28,7 +28,7 @@ protocol ContactManagerDelegate: AnyObject {
 
 private let workQueue = DispatchQueue(label: "contactsManagerWorkQueue")
 
-class ContactManager: NSObject {
+final class ContactManager: NSObject {
     
     weak var delegate: ContactManagerDelegate?
     

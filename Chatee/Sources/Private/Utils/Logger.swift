@@ -22,7 +22,7 @@ enum LogLevel {
     }
 }
 
-class Logger {
+final class Logger {
     
     static let shared = Logger()
     

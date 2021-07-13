@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class SenderKeyDBModel: Object {
+final class SenderKeyDBModel: Object {
     
     @objc dynamic var name = ""
     @objc dynamic var deviceId = 0

@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class SessionDBModel: Object {
+final class SessionDBModel: Object {
     
     @objc dynamic var name = ""
     @objc dynamic var sessionData = Data()

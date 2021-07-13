@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class SignedPreKeyDBModel: Object {
+final class SignedPreKeyDBModel: Object {
     
     @objc dynamic var keyId = 0
     @objc dynamic var keyData = Data()

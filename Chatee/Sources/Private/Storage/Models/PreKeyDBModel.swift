@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class PreKeyDBModel: Object {
+final class PreKeyDBModel: Object {
     
     @objc dynamic var keyId = 0
     @objc dynamic var keyData = Data()

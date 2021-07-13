@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Chatee {
+public final class Chatee {
     
     public static let shared = Chatee()
     

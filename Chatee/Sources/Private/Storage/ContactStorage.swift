@@ -26,7 +26,7 @@ protocol ContactStorage {
 
 private let contactsWorkQueue = DispatchQueue(label: "contactsWorkQueue")
 
-class ContactStorageManager: ContactStorage {
+final class ContactStorageManager: ContactStorage {
     
     private lazy var realmConfig: Realm.Configuration = {
         let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)

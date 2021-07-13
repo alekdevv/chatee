@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class RoomDBModel: Object {
+final class RoomDBModel: Object {
     
     @objc dynamic var jid = ""
     @objc dynamic var displayName = ""

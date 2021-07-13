@@ -20,7 +20,7 @@ protocol VCardManagerDelegate: AnyObject {
 
 private let workQueue = DispatchQueue(label: "VCardManager-WorkQueue")
 
-class VCardManager: NSObject {
+final class VCardManager: NSObject {
     
     weak var delegate: VCardManagerDelegate?
     

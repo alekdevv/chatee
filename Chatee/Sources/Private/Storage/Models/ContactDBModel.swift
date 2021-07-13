@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class ContactDBModel: Object {
+final class ContactDBModel: Object {
     
     @objc dynamic var jid = ""
     @objc dynamic var name: String?

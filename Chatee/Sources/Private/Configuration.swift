@@ -14,7 +14,7 @@ public enum EncryptionType: String {
 
 private let encryptionTypeUserDefaultsKey = "encryptionTypeUserDefaultsKey"
 
-class Configuration {
+final class Configuration {
     
     static let shared = Configuration()
     
