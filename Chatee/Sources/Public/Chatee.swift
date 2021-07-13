@@ -16,6 +16,16 @@ public class Chatee {
     public weak var chateeContactsDelegate: ChateeProfileDelegate?
     public weak var chateeErrorDelegate: ChateeProfileDelegate?
     
+    public var encryptionType: EncryptionType? {
+        didSet {
+            guard let encryptionType = self.encryptionType else {
+                return
+            }
+            
+            Configuration.shared.encryptionType = encryptionType
+        }
+    }
+    
     private let xmppManager: XMPPManager
     
     private init() {
