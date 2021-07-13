@@ -18,6 +18,7 @@
 		A48EA8142697496500510E05 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48EA8132697496500510E05 /* Logger.swift */; };
 		A4B21273269D9C4E007E3B95 /* MessagingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B21272269D9C4E007E3B95 /* MessagingManager.swift */; };
 		A4B21277269DA093007E3B95 /* Chatee+PublicApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B21276269DA093007E3B95 /* Chatee+PublicApi.swift */; };
+		A4B21279269DA7CE007E3B95 /* PresenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B21278269DA7CE007E3B95 /* PresenceManager.swift */; };
 		A4C07C20269852D000366946 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C07C1F269852D000366946 /* ContactManager.swift */; };
 		A4C07C23269853AE00366946 /* ContactStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C07C22269853AE00366946 /* ContactStorage.swift */; };
 		A4C07C25269853CE00366946 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C07C24269853CE00366946 /* Constant.swift */; };
@@ -114,6 +115,7 @@
 		A48EA8132697496500510E05 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		A4B21272269D9C4E007E3B95 /* MessagingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingManager.swift; sourceTree = "<group>"; };
 		A4B21276269DA093007E3B95 /* Chatee+PublicApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chatee+PublicApi.swift"; sourceTree = "<group>"; };
+		A4B21278269DA7CE007E3B95 /* PresenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenceManager.swift; sourceTree = "<group>"; };
 		A4C07C1F269852D000366946 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		A4C07C22269853AE00366946 /* ContactStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactStorage.swift; sourceTree = "<group>"; };
 		A4C07C24269853CE00366946 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				A4C07C1F269852D000366946 /* ContactManager.swift */,
 				A4B21272269D9C4E007E3B95 /* MessagingManager.swift */,
 				A4C07C492698622D00366946 /* OmemoManager.swift */,
+				A4B21278269DA7CE007E3B95 /* PresenceManager.swift */,
 				A4C07C472698622000366946 /* VCardManager.swift */,
 				A4CCE0F1269C6F220022B220 /* SignalManager.swift */,
 			);
@@ -554,6 +557,7 @@
 				A4E295402695F6DD00E46B18 /* ChateeContactSubscription.swift in Sources */,
 				A4C07C23269853AE00366946 /* ContactStorage.swift in Sources */,
 				A4E295362695F67F00E46B18 /* ChateeContact.swift in Sources */,
+				A4B21279269DA7CE007E3B95 /* PresenceManager.swift in Sources */,
 				A4C07C362698596300366946 /* SenderKeyDBModel.swift in Sources */,
 				A4E2952A2695F49000E46B18 /* ChateeContactsDelegate.swift in Sources */,
 				A48EA8142697496500510E05 /* Logger.swift in Sources */,
