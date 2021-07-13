@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A47A2FCE269C9BDF00C863F9 /* OTRKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A47A2FCD269C9BDA00C863F9 /* OTRKit.framework */; };
-		A47A2FCF269C9BDF00C863F9 /* OTRKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A47A2FCD269C9BDA00C863F9 /* OTRKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A48EA8032696E6D200510E05 /* SignalProtocolC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E2950F2695F1F100E46B18 /* SignalProtocolC.framework */; };
 		A48EA8042696E6D200510E05 /* SignalProtocolC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A4E2950F2695F1F100E46B18 /* SignalProtocolC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A48EA8072696E6D400510E05 /* SignalProtocolObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E2950E2695F1F100E46B18 /* SignalProtocolObjC.framework */; };
@@ -20,6 +18,8 @@
 		A4B21277269DA093007E3B95 /* Chatee+PublicApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B21276269DA093007E3B95 /* Chatee+PublicApi.swift */; };
 		A4B21279269DA7CE007E3B95 /* PresenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B21278269DA7CE007E3B95 /* PresenceManager.swift */; };
 		A4B2127B269DA91D007E3B95 /* FileTransferManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2127A269DA91D007E3B95 /* FileTransferManager.swift */; };
+		A4B21289269DB274007E3B95 /* OTRKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4B21288269DB270007E3B95 /* OTRKit.framework */; };
+		A4B2128A269DB274007E3B95 /* OTRKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A4B21288269DB270007E3B95 /* OTRKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A4C07C20269852D000366946 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C07C1F269852D000366946 /* ContactManager.swift */; };
 		A4C07C23269853AE00366946 /* ContactStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C07C22269853AE00366946 /* ContactStorage.swift */; };
 		A4C07C25269853CE00366946 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C07C24269853CE00366946 /* Constant.swift */; };
@@ -70,16 +70,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A47A2FCA269C9BDA00C863F9 /* PBXContainerItemProxy */ = {
+		A4B21285269DB270007E3B95 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = A47A2FC5269C9BDA00C863F9 /* OTRKit.xcodeproj */;
+			containerPortal = A4B21280269DB26F007E3B95 /* OTRKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D96A69CC235BB43E006FF925;
 			remoteInfo = "OTRKit (macOS)";
 		};
-		A47A2FCC269C9BDA00C863F9 /* PBXContainerItemProxy */ = {
+		A4B21287269DB270007E3B95 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = A47A2FC5269C9BDA00C863F9 /* OTRKit.xcodeproj */;
+			containerPortal = A4B21280269DB26F007E3B95 /* OTRKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D96A6A35235BB83B006FF925;
 			remoteInfo = "OTRKit (iOS)";
@@ -102,7 +102,7 @@
 			files = (
 				A48EA8042696E6D200510E05 /* SignalProtocolC.framework in Embed Frameworks */,
 				A48EA8082696E6D400510E05 /* SignalProtocolObjC.framework in Embed Frameworks */,
-				A47A2FCF269C9BDF00C863F9 /* OTRKit.framework in Embed Frameworks */,
+				A4B2128A269DB274007E3B95 /* OTRKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -110,7 +110,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A47A2FC5269C9BDA00C863F9 /* OTRKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OTRKit.xcodeproj; path = OTRKit/OTRKit.xcodeproj; sourceTree = "<group>"; };
 		A48EA80B2696E9D700510E05 /* XMPPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMPPManager.swift; sourceTree = "<group>"; };
 		A48EA80F2697450000510E05 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		A48EA8132697496500510E05 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -118,6 +117,7 @@
 		A4B21276269DA093007E3B95 /* Chatee+PublicApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chatee+PublicApi.swift"; sourceTree = "<group>"; };
 		A4B21278269DA7CE007E3B95 /* PresenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenceManager.swift; sourceTree = "<group>"; };
 		A4B2127A269DA91D007E3B95 /* FileTransferManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTransferManager.swift; sourceTree = "<group>"; };
+		A4B21280269DB26F007E3B95 /* OTRKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OTRKit.xcodeproj; path = OTRKit/OTRKit.xcodeproj; sourceTree = "<group>"; };
 		A4C07C1F269852D000366946 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		A4C07C22269853AE00366946 /* ContactStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactStorage.swift; sourceTree = "<group>"; };
 		A4C07C24269853CE00366946 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -173,7 +173,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A47A2FCE269C9BDF00C863F9 /* OTRKit.framework in Frameworks */,
+				A4B21289269DB274007E3B95 /* OTRKit.framework in Frameworks */,
 				A4E2950A2695F18900E46B18 /* XMPPFramework in Frameworks */,
 				A48EA8072696E6D400510E05 /* SignalProtocolObjC.framework in Frameworks */,
 				A4E295072695F15B00E46B18 /* RealmSwift in Frameworks */,
@@ -194,15 +194,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A47A2FC6269C9BDA00C863F9 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A47A2FCB269C9BDA00C863F9 /* OTRKit.framework */,
-				A47A2FCD269C9BDA00C863F9 /* OTRKit.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		A48EA80A2696E9C500510E05 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +206,15 @@
 				A4CCE0F1269C6F220022B220 /* SignalManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		A4B21281269DB26F007E3B95 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4B21286269DB270007E3B95 /* OTRKit.framework */,
+				A4B21288269DB270007E3B95 /* OTRKit.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		A4C07C212698533D00366946 /* Storage */ = {
@@ -275,7 +275,7 @@
 		A4E294DC2695B55D00E46B18 = {
 			isa = PBXGroup;
 			children = (
-				A47A2FC5269C9BDA00C863F9 /* OTRKit.xcodeproj */,
+				A4B21280269DB26F007E3B95 /* OTRKit.xcodeproj */,
 				A4E294E82695B55D00E46B18 /* Chatee */,
 				A4E294F32695B55E00E46B18 /* ChateeTests */,
 				A4E294E72695B55D00E46B18 /* Products */,
@@ -477,8 +477,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = A47A2FC6269C9BDA00C863F9 /* Products */;
-					ProjectRef = A47A2FC5269C9BDA00C863F9 /* OTRKit.xcodeproj */;
+					ProductGroup = A4B21281269DB26F007E3B95 /* Products */;
+					ProjectRef = A4B21280269DB26F007E3B95 /* OTRKit.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -490,18 +490,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		A47A2FCB269C9BDA00C863F9 /* OTRKit.framework */ = {
+		A4B21286269DB270007E3B95 /* OTRKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = OTRKit.framework;
-			remoteRef = A47A2FCA269C9BDA00C863F9 /* PBXContainerItemProxy */;
+			remoteRef = A4B21285269DB270007E3B95 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A47A2FCD269C9BDA00C863F9 /* OTRKit.framework */ = {
+		A4B21288269DB270007E3B95 /* OTRKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = OTRKit.framework;
-			remoteRef = A47A2FCC269C9BDA00C863F9 /* PBXContainerItemProxy */;
+			remoteRef = A4B21287269DB270007E3B95 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

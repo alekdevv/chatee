@@ -26,7 +26,7 @@ public final class Chatee {
         }
     }
     
-    private let xmppManager: XMPPManager
+    let xmppManager: XMPPManager
     
     private init() {
         self.xmppManager = XMPPManager()
