@@ -13,9 +13,18 @@ protocol XMPPManagerDelegate: AnyObject {
     func xmppManager(_ xmppManager: XMPPManager, didAuthenticate: Bool)
 }
 
+private let workQueue = DispatchQueue(label: "XMPPManager-WorkQueue")
+
 final class XMPPManager {
     
     weak var delegate: XMPPManagerDelegate?
+    weak var managersDelegate: (ContactManagerDelegate & PresenceManagerDelegate & VCardManagerDelegate & MessagingManagerDelegate & OmemoManagerDelegate)?
+    
+    var omemoManager: OmemoManager?
+    var presenceManager: PresenceManager?
+    var contactManager: ContactManager?
+    var messagingManager: MessagingManager?
+    var vCardManager: VCardManager?
     
     private let xmppStream: XMPPStream
     private let xmppReconnect: XMPPReconnect
@@ -23,10 +32,18 @@ final class XMPPManager {
     private var omemoModule: OMEMOModule?
     
     private var userJID: XMPPJID? {
-        didSet {
-            Configuration.shared.userJID = self.userJID
+        get {
+            return Configuration.shared.userJID
+        }
+        set {
+            Configuration.shared.userJID = newValue
         }
     }
+    
+    private var hostname: String? {
+        return Configuration.shared.hostName
+    }
+
     private var password: String?
     
     private var hostName: String? {
@@ -88,8 +105,88 @@ final class XMPPManager {
         self.xmppPing.activate(self.xmppStream)
     }
     
-    private func setupContactsManager() {
+    private func setupOmemoManager() {
+        guard let userJID = self.userJID else {
+            Logger.shared.log("userJID property not initialized.", level: .error)
+            return
+        }
+        guard let hostname = self.hostname else {
+            Logger.shared.log("hostname property not set.", level: .error)
+            return
+        }
+
+        self.omemoManager = OmemoManager(xmppStream: xmppStream, thisUserJid: userJID, hostName: hostname)
+
+        self.omemoModule = OMEMOModule(omemoStorage: self.omemoManager!, xmlNamespace: OMEMOModuleNamespace.conversationsLegacy)
+        self.omemoModule!.addDelegate(self.omemoManager!, delegateQueue: workQueue)
+        self.omemoModule!.activate(xmppStream)
         
+        self.omemoManager!.initBundlePublish(omemoModule: self.omemoModule!)
+        
+        Logger.shared.log("Omemo Manager setup finished.", level: .verbose)
+    }
+    
+    private func setupMessagingManager() {
+        guard let userJID = self.userJID else {
+            Logger.shared.log("userJID property not initialized.", level: .error)
+            return
+        }
+        
+        guard let omemoManager = self.omemoManager else {
+            Logger.shared.log("omemoManager property not initialized.", level: .error)
+            return
+        }
+        
+        guard let hostname = self.hostname else {
+            Logger.shared.log("hostname property not set.", level: .error)
+            return
+        }
+
+        self.messagingManager = MessagingManager(xmppStream: self.xmppStream, userJID: userJID, omemoManager: omemoManager, hostName: hostname)
+        self.messagingManager?.delegate = self.managersDelegate
+
+        Logger.shared.log("Messaging Manager setup finished.", level: .verbose)
+    }
+    
+    private func setupPresenceManager() {
+        self.presenceManager = PresenceManager(xmppStream: self.xmppStream)
+        self.presenceManager?.delegate = self.managersDelegate
+
+        Logger.shared.log("Presence Manager setup finished.", level: .verbose)
+    }
+
+    private func setupVCardManager() {
+        guard let userJID = self.userJID else {
+            Logger.shared.log("userJID property not initialized.", level: .error)
+            return
+        }
+
+        self.vCardManager = VCardManager(xmppStream: self.xmppStream, userJID: userJID)
+        self.vCardManager?.delegate = self.managersDelegate
+        
+        Logger.shared.log("VCard Manager setup finished.", level: .verbose)
+    }
+
+    private func setupContactManager() {
+        guard let userJID = self.userJID else {
+            Logger.shared.log("userJID property not initialized.", level: .error)
+            return
+        }
+        
+        guard let omemoManager = self.omemoManager else {
+            Logger.shared.log("omemoManager property not initialized.", level: .error)
+            return
+        }
+        
+        guard let vCardManager = self.vCardManager else {
+            Logger.shared.log("vCardManager property not initialized.", level: .error)
+            return
+        }
+        
+        self.contactManager = ContactManager(xmppStream: self.xmppStream, userJID: userJID, vCardManager: vCardManager, omemoManager: omemoManager)
+        self.contactManager?.delegate = self.managersDelegate
+        
+        Logger.shared.log("Contacts Manager setup finished.", level: .verbose)
     }
 
 }
@@ -129,11 +226,11 @@ extension XMPPManager: XMPPStreamDelegate {
     func xmppStreamDidAuthenticate(_ sender: XMPPStream) {
         Logger.shared.log("xmppStreamDidAuthenticate", level: .verbose)
         
-//        setupOmemoManager()
-//        setupMessagingManager()
-//        setupPresenceManager()
-//        setupVCardManager()
-        setupContactsManager()
+        setupContactManager()
+        setupVCardManager()
+        setupPresenceManager()
+        setupMessagingManager()
+        setupOmemoManager()
 
         self.delegate?.xmppManager(self, didAuthenticate: true)
     }
