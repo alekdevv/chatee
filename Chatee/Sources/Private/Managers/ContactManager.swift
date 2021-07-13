@@ -105,14 +105,14 @@ final class ContactManager: NSObject {
 
                     Logger.shared.log("\(savedContact.jid), should fetch devices for contact.", level: .verbose)
 
-//                    self?.omemoManager.fetchDevices(forJid: jid)
+                    self.omemoManager.fetchDevices(forJid: jid)
                 } else if savedContact.subscription == .requestReceived {
                     self.delegate?.contactManager(self, didReceiveSubscriptionRequest: savedContact)
                 } else if savedContact.subscription == .requestSent {
                     self.delegate?.contactManager(self, didSendSubscriptionRequest: savedContact)
                 }
                 
-//                self?.vCardManager.getVCardAvatarForContact(withJIDString: savedContact.jid, subscription: savedContact.subscription)
+                self.vCardManager.getVCardAvatarForContact(withJIDString: savedContact.jid, subscription: savedContact.subscription)
             }
         }
     }
@@ -221,15 +221,15 @@ final class ContactManager: NSObject {
         self.xmppRoster.removeUser(bareJID)
     }
     
-    func acceptSubscription(senderJID: String) {
-        guard let bareJID = XMPPJID(string: senderJID) else { return }
+    func acceptSubscription(senderJid: String) {
+        guard let bareJID = XMPPJID(string: senderJid) else { return }
         
         self.xmppRoster.acceptPresenceSubscriptionRequest(from: bareJID, andAddToRoster: true)
         self.xmppRoster.addUser(bareJID, withNickname: nil)
         
-//        self.omemoManager.fetchDevices(forJid: bareJID)
+        self.omemoManager.fetchDevices(forJid: bareJID)
 
-        self.contactStorage.acceptSubscription(contactJid: senderJID) { [weak self] contact, error in
+        self.contactStorage.acceptSubscription(contactJid: senderJid) { [weak self] contact, error in
             guard let self = self else {
                 return
             }

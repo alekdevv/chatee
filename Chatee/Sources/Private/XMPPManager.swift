@@ -26,6 +26,10 @@ final class XMPPManager {
     var messagingManager: MessagingManager?
     var vCardManager: VCardManager?
     
+    var isAuthenticated: Bool {
+        return self.xmppStream.isAuthenticated
+    }
+
     private let xmppStream: XMPPStream
     private let xmppReconnect: XMPPReconnect
     private let xmppPing: XMPPPing
