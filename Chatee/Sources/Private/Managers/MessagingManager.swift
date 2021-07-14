@@ -10,8 +10,8 @@ import XMPPFramework
 import XMPPFrameworkSwift
 
 protocol MessagingManagerDelegate: AnyObject {
-    func messagingManager(_ messagingManager: MessagingManager, didLoadRecentConversations: [ChateeRecentConversation])
-    func messagingManager(_ messagingManager: MessagingManager, didLoadConversation: ChateeConversation)
+    func messagingManager(_ messagingManager: MessagingManager, didLoadRecentConversations recentConversations: [ChateeRecentConversation])
+    func messagingManager(_ messagingManager: MessagingManager, didLoadConversation conversation: ChateeConversation)
     
     func messagingManager(_ messagingManager: MessagingManager, didAddNewMessage message: ChateeMessage, forRoomID roomID: String)
     func messagingManager(_ messagingManager: MessagingManager, didMarkMessageAs messageStatus: ChateeMessageStatus, forMessageID messageID: String)

@@ -26,11 +26,12 @@ public final class Chatee {
         }
     }
     
-    let xmppManager: XMPPManager
+    let mainManager: MainManager
     
     private init() {
-        self.xmppManager = XMPPManager()
-        self.xmppManager.managersDelegate = self
+        self.mainManager = MainManager()
+        self.mainManager.delegate = self
+        self.mainManager.subManagersDelegate = self
     }
     
 }

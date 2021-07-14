@@ -1,5 +1,5 @@
 //
-//  XMPPManager.swift
+//  MainManager.swift
 //  Chatee
 //
 //  Created by Nikola Aleksendric on 7/8/21.
@@ -9,16 +9,16 @@ import Foundation
 import XMPPFramework
 import XMPPFrameworkSwift
 
-protocol XMPPManagerDelegate: AnyObject {
-    func xmppManager(_ xmppManager: XMPPManager, didAuthenticate: Bool)
+protocol MainManagerDelegate: AnyObject {
+    func mainManager(_ mainManager: MainManager, didAuthenticate authenticated: Bool)
 }
 
-private let workQueue = DispatchQueue(label: "XMPPManager-WorkQueue")
+private let workQueue = DispatchQueue(label: "MainManager-WorkQueue")
 
-final class XMPPManager {
+final class MainManager {
     
-    weak var delegate: XMPPManagerDelegate?
-    weak var managersDelegate: (ContactManagerDelegate & PresenceManagerDelegate & VCardManagerDelegate & MessagingManagerDelegate & OmemoManagerDelegate)?
+    weak var delegate: MainManagerDelegate?
+    weak var subManagersDelegate: (ContactManagerDelegate & PresenceManagerDelegate & VCardManagerDelegate & MessagingManagerDelegate & OmemoManagerDelegate)?
     
     var omemoManager: OmemoManager?
     var presenceManager: PresenceManager?
@@ -91,7 +91,7 @@ final class XMPPManager {
         self.xmppStream.disconnectAfterSending()
     }
     
-    func sendChatState(_ chatState: ChatState, to jid: String) {
+    func sendChatState(_ chatState: ChateeChatState, to jid: String) {
         let xmppJid = XMPPJID(string: jid)
         let chatStateMessage = XMPPMessage(type: nil, to: xmppJid)
         
@@ -218,7 +218,7 @@ final class XMPPManager {
 }
 
 // MARK: - XMPPStreamDelegate
-extension XMPPManager: XMPPStreamDelegate {
+extension MainManager: XMPPStreamDelegate {
     
     func xmppStreamDidConnect(_ sender: XMPPStream) {
         Logger.shared.log("xmppStreamDidConnect", level: .verbose)
@@ -236,7 +236,7 @@ extension XMPPManager: XMPPStreamDelegate {
         Logger.shared.log("xmppStream didNotAuthenticate | error \(error.localName ?? "")", level: .error)
         
 //        self.errorDelegate?.serverError(error: .authenticationError)
-        self.delegate?.xmppManager(self, didAuthenticate: false)
+        self.delegate?.mainManager(self, didAuthenticate: false)
     }
     
     func xmppStream(_ sender: XMPPStream, willSecureWithSettings settings: NSMutableDictionary) {
@@ -258,6 +258,6 @@ extension XMPPManager: XMPPStreamDelegate {
         setupMessagingManager()
         setupOmemoManager()
 
-        self.delegate?.xmppManager(self, didAuthenticate: true)
+        self.delegate?.mainManager(self, didAuthenticate: true)
     }
 }

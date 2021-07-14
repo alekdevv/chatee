@@ -8,6 +8,6 @@
 import Foundation
 
 public protocol ChateeProfileDelegate: AnyObject {
-    func chateeProfile(_ chatee: Chatee, loggedIn: Bool)
-    func chateeProfileAvatarChanged(_ chatee: Chatee, new avatar: Data)
+    func chateeProfile(_ chatee: Chatee, didAuthenticate authenticated: Bool)
+    func chateeProfile(_ chatee: Chatee, didChangeAvatar avatar: Data)
 }

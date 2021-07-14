@@ -7,11 +7,11 @@
 
 import Foundation
 
-// MARK: - XMPPManagerDelegate
-extension Chatee: XMPPManagerDelegate {
+// MARK: - MainManagerDelegate
+extension Chatee: MainManagerDelegate {
     
-    func xmppManager(_ xmppManager: XMPPManager, didAuthenticate: Bool) {
-        self.chateeProfileDelegate?.chateeProfile(self, loggedIn: didAuthenticate)
+    func mainManager(_ mainManager: MainManager, didAuthenticate authenticated: Bool) {
+        self.chateeProfileDelegate?.chateeProfile(self, didAuthenticate: authenticated)
     }
     
 }
@@ -67,7 +67,7 @@ extension Chatee: ContactManagerDelegate {
 extension Chatee: VCardManagerDelegate {
     
     func vCardManager(_ vCardManager: VCardManager, userDidChangeAvatar avatar: Data) {
-        
+        self.chateeProfileDelegate?.chateeProfile(self, didChangeAvatar: avatar)
     }
     
     func vCardManager(_ vCardManager: VCardManager, didLoadContactAvatar avatar: Data, forContactJid contactJid: String) {
@@ -94,11 +94,11 @@ extension Chatee: PresenceManagerDelegate {
 
 extension Chatee: MessagingManagerDelegate {
     
-    func messagingManager(_ messagingManager: MessagingManager, didLoadRecentConversations: [ChateeRecentConversation]) {
+    func messagingManager(_ messagingManager: MessagingManager, didLoadRecentConversations recentConversations: [ChateeRecentConversation]) {
         
     }
     
-    func messagingManager(_ messagingManager: MessagingManager, didLoadConversation: ChateeConversation) {
+    func messagingManager(_ messagingManager: MessagingManager, didLoadConversation conversation: ChateeConversation) {
         
     }
     

@@ -11,7 +11,7 @@
 		A48EA8042696E6D200510E05 /* SignalProtocolC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A4E2950F2695F1F100E46B18 /* SignalProtocolC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A48EA8072696E6D400510E05 /* SignalProtocolObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E2950E2695F1F100E46B18 /* SignalProtocolObjC.framework */; };
 		A48EA8082696E6D400510E05 /* SignalProtocolObjC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A4E2950E2695F1F100E46B18 /* SignalProtocolObjC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A48EA80C2696E9D700510E05 /* XMPPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48EA80B2696E9D700510E05 /* XMPPManager.swift */; };
+		A48EA80C2696E9D700510E05 /* MainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48EA80B2696E9D700510E05 /* MainManager.swift */; };
 		A48EA8102697450000510E05 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48EA80F2697450000510E05 /* Configuration.swift */; };
 		A48EA8142697496500510E05 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48EA8132697496500510E05 /* Logger.swift */; };
 		A4B21273269D9C4E007E3B95 /* MessagingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B21272269D9C4E007E3B95 /* MessagingManager.swift */; };
@@ -110,7 +110,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A48EA80B2696E9D700510E05 /* XMPPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMPPManager.swift; sourceTree = "<group>"; };
+		A48EA80B2696E9D700510E05 /* MainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainManager.swift; sourceTree = "<group>"; };
 		A48EA80F2697450000510E05 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		A48EA8132697496500510E05 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		A4B21272269D9C4E007E3B95 /* MessagingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingManager.swift; sourceTree = "<group>"; };
@@ -335,7 +335,7 @@
 		A4E295022695F09800E46B18 /* Private */ = {
 			isa = PBXGroup;
 			children = (
-				A48EA80B2696E9D700510E05 /* XMPPManager.swift */,
+				A48EA80B2696E9D700510E05 /* MainManager.swift */,
 				A48EA80F2697450000510E05 /* Configuration.swift */,
 				A48EA80A2696E9C500510E05 /* Managers */,
 				A4C07C212698533D00366946 /* Storage */,
@@ -554,7 +554,7 @@
 				A4E295242695F40200E46B18 /* Chatee.swift in Sources */,
 				A4E2954E2695FA2000E46B18 /* Chatee+Delegates.swift in Sources */,
 				A4CCE0F4269C73390022B220 /* String+toJSON.swift in Sources */,
-				A48EA80C2696E9D700510E05 /* XMPPManager.swift in Sources */,
+				A48EA80C2696E9D700510E05 /* MainManager.swift in Sources */,
 				A4B21273269D9C4E007E3B95 /* MessagingManager.swift in Sources */,
 				A4E2952C2695F49D00E46B18 /* ChateeErrorDelegate.swift in Sources */,
 				A4E295402695F6DD00E46B18 /* ChateeContactSubscription.swift in Sources */,

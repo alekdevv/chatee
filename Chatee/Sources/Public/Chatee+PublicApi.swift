@@ -10,19 +10,19 @@ import Foundation
 extension Chatee {
     
     private var contactManager: ContactManager? {
-        return self.xmppManager.contactManager
+        return self.mainManager.contactManager
     }
 
     private var presenceManager: PresenceManager? {
-        return self.xmppManager.presenceManager
+        return self.mainManager.presenceManager
     }
 
     private var vCardManager: VCardManager? {
-        return self.xmppManager.vCardManager
+        return self.mainManager.vCardManager
     }
     
     private var messagingManager: MessagingManager? {
-        return self.xmppManager.messagingManager
+        return self.mainManager.messagingManager
     }
     
     /// Connects the user to the server.
@@ -31,23 +31,23 @@ extension Chatee {
     ///     - bareJid: Bare jid of the user to connect with.
     ///     - password: If there is authentication for this user, provide a password. Optional.
     public func connect(hostName: String, bareJid: String, password: String?) {
-        self.xmppManager.connect(hostName: hostName, bareJid: bareJid, password: password ?? "")
+        self.mainManager.connect(hostName: hostName, bareJid: bareJid, password: password ?? "")
     }
     
     /// Disconnects the user from the server.
     public func disconnect() {
-        guard self.xmppManager.isAuthenticated else {
+        guard self.mainManager.isAuthenticated else {
             return
         }
         
-        self.xmppManager.disconnect()
+        self.mainManager.disconnect()
     }
     
     /// Sends user presence status to the server.
     /// - Parameters:
     ///     - presenceStatus: Current presence status of the user.
     public func sendPresenceStatus(_ presenceStatus: ChateePresenceStatus) {
-        guard self.xmppManager.isAuthenticated else {
+        guard self.mainManager.isAuthenticated else {
             return
         }
         
@@ -63,7 +63,7 @@ extension Chatee {
     /// - Parameters:
     ///     - bareJid: Bare jid of the user who sent the subscription request.
     public func acceptSubscription(from bareJid: String) {
-        guard self.xmppManager.isAuthenticated else {
+        guard self.mainManager.isAuthenticated else {
             return
         }
         
@@ -78,7 +78,7 @@ extension Chatee {
     /// - Parameters:
     ///     - bareJid: Bare jid of the user who sent the subscription request.
     public func rejectSubscription(from bareJid: String) {
-        guard self.xmppManager.isAuthenticated else {
+        guard self.mainManager.isAuthenticated else {
             return
         }
         
@@ -93,7 +93,7 @@ extension Chatee {
     /// - Parameters:
     ///     - bareJid: A bare jid of the user to whom the subscription request is sent.
     public func sendSubscriptionRequest(to bareJid: String) {
-        guard self.xmppManager.isAuthenticated else {
+        guard self.mainManager.isAuthenticated else {
             return
         }
         
@@ -108,7 +108,7 @@ extension Chatee {
     /// - Parameters:
     ///     - bareJid: A bare jid of the subscribed user.
     public func removeSubscription(with bareJid: String) {
-        guard self.xmppManager.isAuthenticated else {
+        guard self.mainManager.isAuthenticated else {
             return
         }
         
@@ -123,7 +123,7 @@ extension Chatee {
     /// - Parameters:
     ///     - subscryptionType:
     public func loadContacts(with subscriptionType: ChateeContactSubscription) {
-        guard self.xmppManager.isAuthenticated else {
+        guard self.mainManager.isAuthenticated else {
             return
         }
 
@@ -136,7 +136,7 @@ extension Chatee {
     
     /// Sends presence probes for subscribed contacts.
     public func sendPresenceProbesForSubscribedContacts() {
-        guard self.xmppManager.isAuthenticated else {
+        guard self.mainManager.isAuthenticated else {
             return
         }
 
@@ -151,7 +151,7 @@ extension Chatee {
     /// - Parameters:
     ///     - contacts: List of contacts.
     public func sendPresenceProbes(for contacts: [ChateeContact]) {
-        guard self.xmppManager.isAuthenticated else {
+        guard self.mainManager.isAuthenticated else {
             return
         }
         
@@ -166,7 +166,7 @@ extension Chatee {
     /// - Parameters:
     ///     - contactJid: User's bare jid.
     public func getAvatar(for contactBareJid: String) -> Data? {
-        guard self.xmppManager.isAuthenticated else {
+        guard self.mainManager.isAuthenticated else {
             return nil
         }
 
@@ -181,7 +181,7 @@ extension Chatee {
     /// - Parameters:
     ///     - bareJid: Bare jid of the user.
     public func loadConversation(with bareJid: String) {
-        guard self.xmppManager.isAuthenticated else {
+        guard self.mainManager.isAuthenticated else {
             self.chateeErrorDelegate?.chateeError(self, type: .xmpp(error: .notAuthenticated))
             return
         }
@@ -195,7 +195,7 @@ extension Chatee {
     
     /// Loads conversations list.
     public func loadRecentConversations() {
-        guard self.xmppManager.isAuthenticated else {
+        guard self.mainManager.isAuthenticated else {
             return
         }
         
@@ -208,7 +208,7 @@ extension Chatee {
     
     /// Loads all archived messages from the server.
     public func loadServerArhivedMessagesForContacts(contactJids: [String]) {
-        guard self.xmppManager.isAuthenticated else {
+        guard self.mainManager.isAuthenticated else {
             return
         }
         
@@ -221,7 +221,7 @@ extension Chatee {
 
     /// Returns number of unread messages.
     public func getUnreadMessagesCount() -> Int {
-        guard self.xmppManager.isAuthenticated else {
+        guard self.mainManager.isAuthenticated else {
             return 0
         }
         
@@ -233,7 +233,7 @@ extension Chatee {
     /// - Parameters:
     ///     - contactJid: Bare jid of the contact.
     public func unreadMessagesCount(for contactJid: String) -> Int {
-        guard self.xmppManager.isAuthenticated else {
+        guard self.mainManager.isAuthenticated else {
             return 0
         }
         
@@ -246,7 +246,7 @@ extension Chatee {
     ///     - text: Text input of the message.
     ///     - toJid: Recepient's bare jid.
     public func sendMessage(text: String, to contactJid: String) {
-        guard self.xmppManager.isAuthenticated else {
+        guard self.mainManager.isAuthenticated else {
             return
         }
         
@@ -262,7 +262,7 @@ extension Chatee {
     ///     - data: File data.
     ///     - toJid: Recepient's bare jid.
     public func sendFile(_ data: Data, to contactJid: String) {
-        guard self.xmppManager.isAuthenticated else {
+        guard self.mainManager.isAuthenticated else {
             return
         }
         
@@ -275,7 +275,7 @@ extension Chatee {
     
     /// Forces service to send outgoing messages immediately.
     public func forceSendOutgoingMessages() {
-        guard self.xmppManager.isAuthenticated else {
+        guard self.mainManager.isAuthenticated else {
             return
         }
         
@@ -291,19 +291,19 @@ extension Chatee {
     ///     - chatState: Current chat state.
     ///     - contactJid: Bare Jid of the contact.
     public func sendChatState(_ chatState: ChateeChatState, to contactJid: String) {
-        guard self.xmppManager.isAuthenticated else {
+        guard self.mainManager.isAuthenticated else {
             return
         }
         
         
-        self.xmppManager.sendChatState(chatState, to: contactJid)
+        self.mainManager.sendChatState(chatState, to: contactJid)
     }
         
     /// Changes avatar of this user.
     /// - Parameters:
     ///     - imageData: Data of the avatar image to bi uploaded to the server.
     public func changeAvatar(with imageData: Data) {
-        guard self.xmppManager.isAuthenticated else {
+        guard self.mainManager.isAuthenticated else {
             return
         }
         

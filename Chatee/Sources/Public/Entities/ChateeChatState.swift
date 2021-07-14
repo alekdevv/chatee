@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum ChateeChatState {
+public enum ChateeChatState: String {
     case active
     case inactive
     case composing
