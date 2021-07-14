@@ -25,16 +25,16 @@ extension Chatee {
         return xmppManager.messagingManager
     }
     
-    /// Used to connect to the server.
+    /// Connects the user to the server.
     /// - Parameters:
-    ///     - hostName: Host server url.
-    ///     - bareJid: Bare jid of a user to connect with.
-    ///     - password: If there is authentication for this user, provide password. It's optional.
+    ///     - hostName: Server host url.
+    ///     - bareJid: Bare jid of the user to connect with.
+    ///     - password: If there is authentication for this user, provide a password. Optional.
     public func connect(hostName: String, bareJid: String, password: String?) {
         self.xmppManager.connect(hostName: hostName, bareJid: bareJid, password: password ?? "")
     }
     
-    /// Used to disconnect from the server
+    /// Disconnects the user from the server.
     public func disconnect() {
         guard self.xmppManager.isAuthenticated else {
             return
@@ -43,9 +43,9 @@ extension Chatee {
         self.xmppManager.disconnect()
     }
     
-    /// Used to send presence to the server.
+    /// Sends user presence status to the server.
     /// - Parameters:
-    ///     - presenceStatus: Current presence status.
+    ///     - presenceStatus: Current presence status of the user.
     public func sendPresenceStatus(_ presenceStatus: ChateePresenceStatus) {
         guard self.xmppManager.isAuthenticated else {
             return
@@ -56,6 +56,37 @@ extension Chatee {
         }
         
         presenceManager.sendPresenceStatus(presenceStatus)
+    }
+
+    /// Accepts subscription request from the user with the given bareJid
+    /// - By accepting the subscription request, the user adds another user to the list and can communicate with him.
+    /// - Parameters:
+    ///     - bareJid: Bare Jid of the user who sent the subscription request.
+    public func acceptSubscription(fromBareJid bareJid: String) {
+        guard self.xmppManager.isAuthenticated else {
+            return
+        }
+        
+        guard let contactManager = self.contactManager else {
+            return
+        }
+
+        contactManager.acceptSubscription(senderJid: bareJid)
+    }
+    
+    /// Rejects subscription request from the user with the given bareJid
+    /// - Parameters:
+    ///     - bareJid: Bare Jid of the user who sent the subscription request.
+    public func rejectSubscription(fromBareJid bareJid: String) {
+        guard self.xmppManager.isAuthenticated else {
+            return
+        }
+        
+        guard let contactManager = self.contactManager else {
+            return
+        }
+
+        contactManager.rejectSubscription(senderJid: bareJid)
     }
 
 }

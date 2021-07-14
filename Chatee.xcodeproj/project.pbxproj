@@ -54,7 +54,7 @@
 		A4E295242695F40200E46B18 /* Chatee.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E295232695F40200E46B18 /* Chatee.swift */; };
 		A4E295262695F43C00E46B18 /* ChateeProfileDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E295252695F43C00E46B18 /* ChateeProfileDelegate.swift */; };
 		A4E295282695F48100E46B18 /* ChateeConversationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E295272695F48100E46B18 /* ChateeConversationDelegate.swift */; };
-		A4E2952A2695F49000E46B18 /* ChateeContactsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E295292695F49000E46B18 /* ChateeContactsDelegate.swift */; };
+		A4E2952A2695F49000E46B18 /* ChateeContactDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E295292695F49000E46B18 /* ChateeContactDelegate.swift */; };
 		A4E2952C2695F49D00E46B18 /* ChateeErrorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2952B2695F49D00E46B18 /* ChateeErrorDelegate.swift */; };
 		A4E295302695F66100E46B18 /* ChateeConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2952F2695F66100E46B18 /* ChateeConversation.swift */; };
 		A4E295322695F66E00E46B18 /* ChateeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E295312695F66E00E46B18 /* ChateeMessage.swift */; };
@@ -153,7 +153,7 @@
 		A4E295232695F40200E46B18 /* Chatee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatee.swift; sourceTree = "<group>"; };
 		A4E295252695F43C00E46B18 /* ChateeProfileDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChateeProfileDelegate.swift; sourceTree = "<group>"; };
 		A4E295272695F48100E46B18 /* ChateeConversationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChateeConversationDelegate.swift; sourceTree = "<group>"; };
-		A4E295292695F49000E46B18 /* ChateeContactsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChateeContactsDelegate.swift; sourceTree = "<group>"; };
+		A4E295292695F49000E46B18 /* ChateeContactDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChateeContactDelegate.swift; sourceTree = "<group>"; };
 		A4E2952B2695F49D00E46B18 /* ChateeErrorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChateeErrorDelegate.swift; sourceTree = "<group>"; };
 		A4E2952F2695F66100E46B18 /* ChateeConversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChateeConversation.swift; sourceTree = "<group>"; };
 		A4E295312695F66E00E46B18 /* ChateeMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChateeMessage.swift; sourceTree = "<group>"; };
@@ -362,7 +362,7 @@
 			children = (
 				A4E295252695F43C00E46B18 /* ChateeProfileDelegate.swift */,
 				A4E295272695F48100E46B18 /* ChateeConversationDelegate.swift */,
-				A4E295292695F49000E46B18 /* ChateeContactsDelegate.swift */,
+				A4E295292695F49000E46B18 /* ChateeContactDelegate.swift */,
 				A4E2952B2695F49D00E46B18 /* ChateeErrorDelegate.swift */,
 			);
 			path = Delegates;
@@ -563,7 +563,7 @@
 				A4B21279269DA7CE007E3B95 /* PresenceManager.swift in Sources */,
 				A4B2127B269DA91D007E3B95 /* FileTransferManager.swift in Sources */,
 				A4C07C362698596300366946 /* SenderKeyDBModel.swift in Sources */,
-				A4E2952A2695F49000E46B18 /* ChateeContactsDelegate.swift in Sources */,
+				A4E2952A2695F49000E46B18 /* ChateeContactDelegate.swift in Sources */,
 				A48EA8142697496500510E05 /* Logger.swift in Sources */,
 				A4E295382695F69B00E46B18 /* ChateeRecentConversation.swift in Sources */,
 				A4E295322695F66E00E46B18 /* ChateeMessage.swift in Sources */,

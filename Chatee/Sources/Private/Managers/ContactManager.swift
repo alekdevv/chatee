@@ -246,12 +246,12 @@ final class ContactManager: NSObject {
         }
     }
 
-    func rejectSubscription(senderJID: String) {
-        guard let bareJID = XMPPJID(string: senderJID) else { return }
+    func rejectSubscription(senderJid: String) {
+        guard let bareJID = XMPPJID(string: senderJid) else { return }
         
         self.xmppRoster.rejectPresenceSubscriptionRequest(from: bareJID)
         
-        self.contactStorage.rejectSubscription(contactJid: senderJID) { [weak self] success, error in
+        self.contactStorage.rejectSubscription(contactJid: senderJid) { [weak self] success, error in
             guard let self = self else {
                 return
             }
@@ -262,7 +262,7 @@ final class ContactManager: NSObject {
                 self.delegate?.contactManager(self, errorOccurred: .database)
             } else if success {
                 // Display
-                Logger.shared.log("Subscription rejected: \(senderJID)", level: .verbose)
+                Logger.shared.log("Subscription rejected: \(senderJid)", level: .verbose)
             }
         }
     }

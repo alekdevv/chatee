@@ -12,9 +12,9 @@ public final class Chatee {
     public static let shared = Chatee()
     
     public weak var chateeProfileDelegate: ChateeProfileDelegate?
-    public weak var chateeConversationDelegate: ChateeProfileDelegate?
-    public weak var chateeContactsDelegate: ChateeProfileDelegate?
-    public weak var chateeErrorDelegate: ChateeProfileDelegate?
+    public weak var chateeConversationDelegate: ChateeConversationDelegate?
+    public weak var chateeContactDelegate: ChateeContactDelegate?
+    public weak var chateeErrorDelegate: ChateeErrorDelegate?
     
     public var encryptionType: EncryptionType? {
         didSet {
