@@ -61,8 +61,8 @@ extension Chatee {
     /// Accepts subscription request from the user with the given bareJid
     /// - By accepting the subscription request, the user adds another user to the list and can communicate with him.
     /// - Parameters:
-    ///     - bareJid: Bare Jid of the user who sent the subscription request.
-    public func acceptSubscription(fromBareJid bareJid: String) {
+    ///     - bareJid: Bare jid of the user who sent the subscription request.
+    public func acceptSubscription(from bareJid: String) {
         guard self.xmppManager.isAuthenticated else {
             return
         }
@@ -76,8 +76,8 @@ extension Chatee {
     
     /// Rejects subscription request from the user with the given bareJid
     /// - Parameters:
-    ///     - bareJid: Bare Jid of the user who sent the subscription request.
-    public func rejectSubscription(fromBareJid bareJid: String) {
+    ///     - bareJid: Bare jid of the user who sent the subscription request.
+    public func rejectSubscription(from bareJid: String) {
         guard self.xmppManager.isAuthenticated else {
             return
         }
@@ -87,6 +87,51 @@ extension Chatee {
         }
 
         contactManager.rejectSubscription(senderJid: bareJid)
+    }
+    
+    /// Sends a subscription request to the user with the given bare jid.
+    /// - Parameters:
+    ///     - bareJid: A bare jid of the user to whom the subscription request is sent.
+    public func sendSubscriptionRequest(to bareJid: String) {
+        guard self.xmppManager.isAuthenticated else {
+            return
+        }
+        
+        guard let contactManager = self.contactManager else {
+            return
+        }
+
+        contactManager.sendSubscriptionRequest(to: bareJid)
+    }
+
+    /// Removes a subscription to the user with the given bare jid.
+    /// - Parameters:
+    ///     - bareJid: A bare jid of the subscribed user.
+    public func removeSubscription(with bareJid: String) {
+        guard self.xmppManager.isAuthenticated else {
+            return
+        }
+        
+        guard let contactManager = self.contactManager else {
+            return
+        }
+
+        contactManager.removeSubscription(bareJIDString: bareJid)
+    }
+    
+    /// Loads contacts from the roster with the given subscription type.
+    /// - Parameters:
+    ///     - subscryptionType:
+    public func loadContacts(with subscriptionType: ChateeContactSubscription) {
+        guard self.xmppManager.isAuthenticated else {
+            return
+        }
+
+        guard let contactManager = self.contactManager else {
+            return
+        }
+
+        contactManager.loadContacts(subscriptionType: subscriptionType)
     }
 
 }
