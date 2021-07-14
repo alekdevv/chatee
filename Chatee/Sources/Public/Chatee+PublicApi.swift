@@ -176,5 +176,34 @@ extension Chatee {
 
         return contactManager.getAvatar(for: contactBareJid)
     }
+    
+    /// Loads a conversation with the user.
+    /// - Parameters:
+    ///     - bareJid: Bare jid of the user.
+    public func loadConversation(with bareJid: String) {
+        guard self.xmppManager.isAuthenticated else {
+            self.chateeErrorDelegate?.chateeError(self, type: .xmpp(error: .notAuthenticated))
+            return
+        }
+        
+        guard let messagingManager = self.xmppManager.messagingManager else {
+            return
+        }
+
+        messagingManager.loadConversation(withID: bareJid)
+    }
+    
+    /// Loads conversations list.
+    public func loadRecentConversations() {
+        guard self.xmppManager.isAuthenticated else {
+            return
+        }
+        
+        guard let messagingManager = self.xmppManager.messagingManager else {
+            return
+        }
+
+        messagingManager.loadRecentConversations()
+    }
 
 }
