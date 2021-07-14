@@ -182,7 +182,6 @@ extension Chatee {
     ///     - bareJid: Bare jid of the user.
     public func loadConversation(with bareJid: String) {
         guard self.mainManager.isAuthenticated else {
-            self.chateeErrorDelegate?.chateeError(self, type: .xmpp(error: .notAuthenticated))
             return
         }
         

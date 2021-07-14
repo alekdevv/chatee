@@ -31,7 +31,7 @@ public final class Chatee {
     private init() {
         self.mainManager = MainManager()
         self.mainManager.delegate = self
-        self.mainManager.subManagersDelegate = self
+        self.mainManager.managersDelegate = self
     }
     
 }

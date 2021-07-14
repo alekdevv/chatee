@@ -18,7 +18,7 @@ private let workQueue = DispatchQueue(label: "MainManager-WorkQueue")
 final class MainManager {
     
     weak var delegate: MainManagerDelegate?
-    weak var subManagersDelegate: (ContactManagerDelegate & PresenceManagerDelegate & VCardManagerDelegate & MessagingManagerDelegate & OmemoManagerDelegate)?
+    weak var managersDelegate: (ContactManagerDelegate & PresenceManagerDelegate & VCardManagerDelegate & MessagingManagerDelegate & OmemoManagerDelegate)?
     
     var omemoManager: OmemoManager?
     var presenceManager: PresenceManager?
