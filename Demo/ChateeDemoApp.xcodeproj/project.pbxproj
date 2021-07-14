@@ -14,6 +14,14 @@
 		A4698A36269F347C00D70D94 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4698A35269F347C00D70D94 /* AppCoordinator.swift */; };
 		A4698A38269F348800D70D94 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4698A37269F348800D70D94 /* Coordinator.swift */; };
 		A4698A3F269F38F800D70D94 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4698A3E269F38F800D70D94 /* Account.swift */; };
+		A4698A43269F3AB000D70D94 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4698A41269F3AB000D70D94 /* LoginViewController.swift */; };
+		A4698A44269F3AB000D70D94 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4698A42269F3AB000D70D94 /* LoginViewController.xib */; };
+		A4698A48269F3ACC00D70D94 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4698A46269F3ACC00D70D94 /* ChatsViewController.swift */; };
+		A4698A49269F3ACC00D70D94 /* ChatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4698A47269F3ACC00D70D94 /* ChatsViewController.xib */; };
+		A4698A4C269F3AE000D70D94 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4698A4A269F3AE000D70D94 /* ContactsViewController.swift */; };
+		A4698A4D269F3AE000D70D94 /* ContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4698A4B269F3AE000D70D94 /* ContactsViewController.xib */; };
+		A4698A50269F3AEF00D70D94 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4698A4E269F3AEF00D70D94 /* SettingsViewController.swift */; };
+		A4698A51269F3AEF00D70D94 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4698A4F269F3AEF00D70D94 /* SettingsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +35,14 @@
 		A4698A37269F348800D70D94 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		A4698A3A269F36FD00D70D94 /* Chatee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Chatee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4698A3E269F38F800D70D94 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		A4698A41269F3AB000D70D94 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A4698A42269F3AB000D70D94 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		A4698A46269F3ACC00D70D94 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
+		A4698A47269F3ACC00D70D94 /* ChatsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatsViewController.xib; sourceTree = "<group>"; };
+		A4698A4A269F3AE000D70D94 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		A4698A4B269F3AE000D70D94 /* ContactsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactsViewController.xib; sourceTree = "<group>"; };
+		A4698A4E269F3AEF00D70D94 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A4698A4F269F3AEF00D70D94 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +76,7 @@
 		A4698A1F269F32EC00D70D94 /* ChateeDemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				A4698A40269F3AA200D70D94 /* Scenes */,
 				A4698A20269F32EC00D70D94 /* AppDelegate.swift */,
 				A4698A24269F32EC00D70D94 /* ViewController.swift */,
 				A4698A35269F347C00D70D94 /* AppCoordinator.swift */,
@@ -78,6 +95,53 @@
 				A4698A3A269F36FD00D70D94 /* Chatee.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4698A40269F3AA200D70D94 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				A4698A52269F3AFA00D70D94 /* Login */,
+				A4698A53269F3B0300D70D94 /* Chats */,
+				A4698A54269F3B0F00D70D94 /* Contacts */,
+				A4698A55269F3B1500D70D94 /* Settings */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		A4698A52269F3AFA00D70D94 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A4698A41269F3AB000D70D94 /* LoginViewController.swift */,
+				A4698A42269F3AB000D70D94 /* LoginViewController.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A4698A53269F3B0300D70D94 /* Chats */ = {
+			isa = PBXGroup;
+			children = (
+				A4698A46269F3ACC00D70D94 /* ChatsViewController.swift */,
+				A4698A47269F3ACC00D70D94 /* ChatsViewController.xib */,
+			);
+			path = Chats;
+			sourceTree = "<group>";
+		};
+		A4698A54269F3B0F00D70D94 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				A4698A4A269F3AE000D70D94 /* ContactsViewController.swift */,
+				A4698A4B269F3AE000D70D94 /* ContactsViewController.xib */,
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
+		A4698A55269F3B1500D70D94 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A4698A4E269F3AEF00D70D94 /* SettingsViewController.swift */,
+				A4698A4F269F3AEF00D70D94 /* SettingsViewController.xib */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +202,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4698A2D269F32EE00D70D94 /* LaunchScreen.storyboard in Resources */,
+				A4698A51269F3AEF00D70D94 /* SettingsViewController.xib in Resources */,
 				A4698A2A269F32EE00D70D94 /* Assets.xcassets in Resources */,
+				A4698A49269F3ACC00D70D94 /* ChatsViewController.xib in Resources */,
+				A4698A44269F3AB000D70D94 /* LoginViewController.xib in Resources */,
+				A4698A4D269F3AE000D70D94 /* ContactsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,11 +217,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4698A43269F3AB000D70D94 /* LoginViewController.swift in Sources */,
 				A4698A3F269F38F800D70D94 /* Account.swift in Sources */,
 				A4698A38269F348800D70D94 /* Coordinator.swift in Sources */,
 				A4698A36269F347C00D70D94 /* AppCoordinator.swift in Sources */,
+				A4698A48269F3ACC00D70D94 /* ChatsViewController.swift in Sources */,
+				A4698A4C269F3AE000D70D94 /* ContactsViewController.swift in Sources */,
 				A4698A25269F32EC00D70D94 /* ViewController.swift in Sources */,
 				A4698A21269F32EC00D70D94 /* AppDelegate.swift in Sources */,
+				A4698A50269F3AEF00D70D94 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
