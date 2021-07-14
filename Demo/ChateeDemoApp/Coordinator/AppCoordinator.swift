@@ -14,7 +14,7 @@ final class AppCoordinator: Coordinator {
     }
     
     private lazy var loginViewController: UIViewController = {
-        let viewController = UIViewController()
+        let viewController = LoginViewController()
         viewController.view.backgroundColor = .yellow
         
         return viewController
@@ -22,13 +22,17 @@ final class AppCoordinator: Coordinator {
     
     private lazy var tabBarController: UITabBarController = {
         let tabBarController = UITabBarController()
-        tabBarController.setViewControllers([], animated: true)
+        tabBarController.setViewControllers(self.tabViewControllers, animated: true)
         
         return tabBarController
     }()
     
-    private lazy var tabViewController: [UIViewController] = {
-        return []
+    private lazy var tabViewControllers: [UIViewController] = {
+        let chatsViewController = ChatsViewController()
+        let contactsViewController = ContactsViewController()
+        let settingsViewController = SettingsViewController()
+        
+        return [chatsViewController, contactsViewController, settingsViewController]
     }()
     
     
