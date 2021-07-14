@@ -91,6 +91,28 @@ final class XMPPManager {
         self.xmppStream.disconnectAfterSending()
     }
     
+    func sendChatState(_ chatState: ChatState, to jid: String) {
+        let xmppJid = XMPPJID(string: jid)
+        let chatStateMessage = XMPPMessage(type: nil, to: xmppJid)
+        
+        Logger.shared.log("Sending chat state message: \(chatState.rawValue), to: \(jid)", level: .verbose)
+        
+        switch chatState {
+        case .active:
+            chatStateMessage.addActiveChatState()
+        case .inactive:
+            chatStateMessage.addInactiveChatState()
+        case .composing:
+            chatStateMessage.addComposingChatState()
+        case .paused:
+            chatStateMessage.addPausedChatState()
+        case .gone:
+            chatStateMessage.addGoneChatState()
+        }
+        
+        self.xmppStream.send(chatStateMessage)
+    }
+    
     /// Used to setup stream connection with the server.
     private func setupStream() {
         self.xmppStream.hostName = hostName

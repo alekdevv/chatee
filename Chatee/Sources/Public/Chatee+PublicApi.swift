@@ -10,19 +10,19 @@ import Foundation
 extension Chatee {
     
     private var contactManager: ContactManager? {
-        return xmppManager.contactManager
+        return self.xmppManager.contactManager
     }
 
     private var presenceManager: PresenceManager? {
-        return xmppManager.presenceManager
+        return self.xmppManager.presenceManager
     }
 
     private var vCardManager: VCardManager? {
-        return xmppManager.vCardManager
+        return self.xmppManager.vCardManager
     }
     
     private var messagingManager: MessagingManager? {
-        return xmppManager.messagingManager
+        return self.xmppManager.messagingManager
     }
     
     /// Connects the user to the server.
@@ -186,7 +186,7 @@ extension Chatee {
             return
         }
         
-        guard let messagingManager = self.xmppManager.messagingManager else {
+        guard let messagingManager = self.messagingManager else {
             return
         }
 
@@ -199,7 +199,7 @@ extension Chatee {
             return
         }
         
-        guard let messagingManager = self.xmppManager.messagingManager else {
+        guard let messagingManager = self.messagingManager else {
             return
         }
 
@@ -284,6 +284,34 @@ extension Chatee {
         }
 
         messagingManager.forceSendOutgoingMessages()
+    }
+    
+    /// Sends chat state to contact.
+    /// - Parameters:
+    ///     - chatState: Current chat state.
+    ///     - contactJid: Bare Jid of the contact.
+    public func sendChatState(_ chatState: ChateeChatState, to contactJid: String) {
+        guard self.xmppManager.isAuthenticated else {
+            return
+        }
+        
+        
+        self.xmppManager.sendChatState(chatState, to: contactJid)
+    }
+        
+    /// Changes avatar of this user.
+    /// - Parameters:
+    ///     - imageData: Data of the avatar image to bi uploaded to the server.
+    public func changeAvatar(with imageData: Data) {
+        guard self.xmppManager.isAuthenticated else {
+            return
+        }
+        
+        guard let vCardManager = self.vCardManager else {
+            return
+        }
+
+        vCardManager.changeAvatar(with: imageData)
     }
 
 }
