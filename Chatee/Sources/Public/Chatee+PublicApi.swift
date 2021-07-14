@@ -205,5 +205,40 @@ extension Chatee {
 
         messagingManager.loadRecentConversations()
     }
+    
+    /// Loads all archived messages from the server.
+    public func loadServerArhivedMessagesForContacts(contactJids: [String]) {
+        guard self.xmppManager.isAuthenticated else {
+            return
+        }
+        
+        guard let messagingManager = self.messagingManager else {
+            return
+        }
+        
+        messagingManager.loadServerArhivedMessagesFor(contactJids: contactJids)
+    }
+
+    /// Returns number of unread messages.
+    public func getUnreadMessagesCount() -> Int {
+        guard self.xmppManager.isAuthenticated else {
+            return 0
+        }
+        
+        // TODO: Unread messages count
+        return 0
+    }
+    
+    /// Returns number of unread messages for specific contact.
+    /// - Parameters:
+    ///     - contactJid: Bare jid of the contact.
+    public func unreadMessagesCount(for contactJid: String) -> Int {
+        guard self.xmppManager.isAuthenticated else {
+            return 0
+        }
+        
+        // TODO: Unread messages count for contact
+        return 0
+    }
 
 }
