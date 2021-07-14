@@ -241,4 +241,49 @@ extension Chatee {
         return 0
     }
 
+    /// Sends a text message to the contact.
+    /// - Parameters:
+    ///     - text: Text input of the message.
+    ///     - toJid: Recepient's bare jid.
+    public func sendMessage(text: String, to contactJid: String) {
+        guard self.xmppManager.isAuthenticated else {
+            return
+        }
+        
+        guard let messagingManager = self.messagingManager else {
+            return
+        }
+        
+        messagingManager.sendMessage(messageID: UUID().uuidString, text: text, to: contactJid)
+    }
+    
+    /// Sends a file to the contact.
+    /// - Parameters:
+    ///     - data: File data.
+    ///     - toJid: Recepient's bare jid.
+    public func sendFile(_ data: Data, to contactJid: String) {
+        guard self.xmppManager.isAuthenticated else {
+            return
+        }
+        
+        guard let messagingManager = self.messagingManager else {
+            return
+        }
+
+        messagingManager.sendFile(messageID: UUID().uuidString, data: data, to: contactJid)
+    }
+    
+    /// Forces service to send outgoing messages immediately.
+    public func forceSendOutgoingMessages() {
+        guard self.xmppManager.isAuthenticated else {
+            return
+        }
+        
+        guard let messagingManager = self.messagingManager else {
+            return
+        }
+
+        messagingManager.forceSendOutgoingMessages()
+    }
+
 }

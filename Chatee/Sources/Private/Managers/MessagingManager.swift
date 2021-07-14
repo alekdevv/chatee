@@ -110,7 +110,7 @@ final class MessagingManager: NSObject {
         }
     }
     
-    func sendFile(messageID: String, text: String = "", data: Data, to jidString: String, shouldEncrypt: Bool) {
+    func sendFile(messageID: String, text: String = "", data: Data, to jidString: String, shouldEncrypt: Bool = Configuration.shared.encryptionType == .omemo) {
         Logger.shared.log("sendFile called", level: .verbose)
         
         guard let toJID = XMPPJID(string: jidString) else { return }
@@ -158,7 +158,7 @@ final class MessagingManager: NSObject {
         }
     }
     
-    func forceSendOutgoingMessages(shouldEncrypt: Bool = true) {
+    func forceSendOutgoingMessages(shouldEncrypt: Bool = Configuration.shared.encryptionType == .omemo) {
         Logger.shared.log("forceSendOutgoingMessages called", level: .verbose)
 
         self.messageStorage.loadOutgoingMessages { [weak self] outgoingMessages, error in
