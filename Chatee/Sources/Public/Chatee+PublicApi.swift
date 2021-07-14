@@ -133,5 +133,48 @@ extension Chatee {
 
         contactManager.loadContacts(subscriptionType: subscriptionType)
     }
+    
+    /// Sends presence probes for subscribed contacts.
+    public func sendPresenceProbesForSubscribedContacts() {
+        guard self.xmppManager.isAuthenticated else {
+            return
+        }
+
+        guard let contactManager = self.contactManager else {
+            return
+        }
+
+        contactManager.sendPresenceProbesForSubscribedContacts()
+    }
+
+    /// Sends presence probes for specific contacts.
+    /// - Parameters:
+    ///     - contacts: List of contacts.
+    public func sendPresenceProbes(for contacts: [ChateeContact]) {
+        guard self.xmppManager.isAuthenticated else {
+            return
+        }
+        
+        guard let contactManager = self.contactManager else {
+            return
+        }
+
+        contactManager.sendPresenceProbes(contacts: contacts)
+    }
+    
+    /// Returns the user's avatar.
+    /// - Parameters:
+    ///     - contactJid: User's bare jid.
+    public func getAvatar(for contactBareJid: String) -> Data? {
+        guard self.xmppManager.isAuthenticated else {
+            return nil
+        }
+
+        guard let contactManager = self.contactManager else {
+            return nil
+        }
+
+        return contactManager.getAvatar(for: contactBareJid)
+    }
 
 }
