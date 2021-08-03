@@ -26,6 +26,12 @@ public final class Chatee {
         }
     }
     
+    public var shouldLog = false {
+        didSet {
+            Logger.shared.shouldLog = self.shouldLog
+        }
+    }
+    
     let mainManager: MainManager
     
     private init() {

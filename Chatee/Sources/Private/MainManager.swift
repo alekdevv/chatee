@@ -15,7 +15,7 @@ protocol MainManagerDelegate: AnyObject {
 
 private let workQueue = DispatchQueue(label: "MainManager-WorkQueue")
 
-final class MainManager {
+final class MainManager: NSObject {
     
     weak var delegate: MainManagerDelegate?
     weak var managersDelegate: (ContactManagerDelegate & PresenceManagerDelegate & VCardManagerDelegate & MessagingManagerDelegate & OmemoManagerDelegate)?
@@ -59,7 +59,7 @@ final class MainManager {
         return Configuration.shared.jidResource
     }
 
-    init() {
+    override init() {
         self.xmppStream = XMPPStream()
         self.xmppReconnect = XMPPReconnect()
         self.xmppPing = XMPPPing()
@@ -252,11 +252,11 @@ extension MainManager: XMPPStreamDelegate {
     func xmppStreamDidAuthenticate(_ sender: XMPPStream) {
         Logger.shared.log("xmppStreamDidAuthenticate", level: .verbose)
         
-        setupContactManager()
-        setupVCardManager()
-        setupPresenceManager()
-        setupMessagingManager()
         setupOmemoManager()
+        setupMessagingManager()
+        setupPresenceManager()
+        setupVCardManager()
+        setupContactManager()
 
         self.delegate?.mainManager(self, didAuthenticate: true)
     }

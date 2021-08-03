@@ -53,6 +53,11 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "LoggedIn"
+            value = "false"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "ChateeLoggerEnabled"
             value = "true"
             isEnabled = "YES">
          </EnvironmentVariable>
