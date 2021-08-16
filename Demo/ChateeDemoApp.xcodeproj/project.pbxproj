@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A4070DE226CAD4DD001697E5 /* UIViewController+fromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4070DE126CAD4DD001697E5 /* UIViewController+fromNib.swift */; };
+		A4070DE426CADC90001697E5 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4070DE326CADC90001697E5 /* Icons.xcassets */; };
 		A4698A21269F32EC00D70D94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4698A20269F32EC00D70D94 /* AppDelegate.swift */; };
 		A4698A2A269F32EE00D70D94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4698A29269F32EE00D70D94 /* Assets.xcassets */; };
 		A4698A2D269F32EE00D70D94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4698A2B269F32EE00D70D94 /* LaunchScreen.storyboard */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		A4070DE126CAD4DD001697E5 /* UIViewController+fromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+fromNib.swift"; sourceTree = "<group>"; };
+		A4070DE326CADC90001697E5 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		A4698A1D269F32EC00D70D94 /* ChateeDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChateeDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4698A20269F32EC00D70D94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4698A29269F32EE00D70D94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				A4698A29269F32EE00D70D94 /* Assets.xcassets */,
+				A4070DE326CADC90001697E5 /* Icons.xcassets */,
 				A4698A2B269F32EE00D70D94 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
@@ -266,6 +269,7 @@
 			files = (
 				A4698A2D269F32EE00D70D94 /* LaunchScreen.storyboard in Resources */,
 				A4698A51269F3AEF00D70D94 /* SettingsViewController.xib in Resources */,
+				A4070DE426CADC90001697E5 /* Icons.xcassets in Resources */,
 				A4698A2A269F32EE00D70D94 /* Assets.xcassets in Resources */,
 				A4698A49269F3ACC00D70D94 /* ChatsViewController.xib in Resources */,
 				A4698A44269F3AB000D70D94 /* LoginViewController.xib in Resources */,
