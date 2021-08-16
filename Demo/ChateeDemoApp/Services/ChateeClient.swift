@@ -7,12 +7,18 @@
 
 import Chatee
 
+protocol ProfileObserver: AnyObject {
+    func accountAuth(success: Bool)
+}
+
 final class ChateeClient {
     
     static let shared = ChateeClient()
     
     private let chatee = Chatee.shared
     private let chateeShouldLog = Bool(ProcessInfo.processInfo.environment["ChateeLoggerEnabled"] ?? "false") ?? false
+    
+    var profileObservers = [ProfileObserver]()
     
     private init() {
         setupChatee()
@@ -22,10 +28,20 @@ final class ChateeClient {
         self.chatee.connect(hostName: hostName, bareJid: bareJid, password: password)
     }
     
+    func addProfileObserver(_ observer: ProfileObserver) {
+        self.profileObservers.append(observer)
+    }
+    
     private func setupChatee() {
         self.chatee.shouldLog = chateeShouldLog
         self.chatee.encryptionType = .omemo
         self.chatee.chateeProfileDelegate = self
+    }
+    
+    private func notifyAccountAuth(success: Bool) {
+        self.profileObservers.forEach {
+            $0.accountAuth(success: success)
+        }
     }
     
 }
@@ -33,7 +49,7 @@ final class ChateeClient {
 extension ChateeClient: ChateeProfileDelegate {
     
     func chateeProfile(_ chatee: Chatee, didAuthenticate authenticated: Bool) {
-        print(authenticated)
+        notifyAccountAuth(success: authenticated)
     }
     
     func chateeProfile(_ chatee: Chatee, didChangeAvatar avatar: Data) {
