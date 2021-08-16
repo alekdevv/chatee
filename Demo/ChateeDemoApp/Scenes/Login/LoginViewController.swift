@@ -9,10 +9,23 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    weak var coordinator: AuthFlowControl?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ChateeClient.shared.connect(hostName: "www.xmpp.jp", bareJid: "nikola-alek@xmpp.jp", password: "chateeAlek0015")
+        ChateeClient.shared.addProfileObserver(self)
     }
 
+}
+
+
+extension LoginViewController: ProfileObserver {
+    
+    func accountAuth(success: Bool) {
+        if success {
+            self.coordinator?.login()
+        }
+    }
+    
 }

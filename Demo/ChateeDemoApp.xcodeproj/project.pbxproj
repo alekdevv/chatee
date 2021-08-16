@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A4070DE226CAD4DD001697E5 /* UIViewController+fromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4070DE126CAD4DD001697E5 /* UIViewController+fromNib.swift */; };
 		A4070DE426CADC90001697E5 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4070DE326CADC90001697E5 /* Icons.xcassets */; };
+		A4070DE826CADE53001697E5 /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4070DE626CADE53001697E5 /* ConnectViewController.swift */; };
+		A4070DE926CADE53001697E5 /* ConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4070DE726CADE53001697E5 /* ConnectViewController.xib */; };
 		A4698A21269F32EC00D70D94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4698A20269F32EC00D70D94 /* AppDelegate.swift */; };
 		A4698A2A269F32EE00D70D94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4698A29269F32EE00D70D94 /* Assets.xcassets */; };
 		A4698A2D269F32EE00D70D94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4698A2B269F32EE00D70D94 /* LaunchScreen.storyboard */; };
@@ -45,6 +47,8 @@
 /* Begin PBXFileReference section */
 		A4070DE126CAD4DD001697E5 /* UIViewController+fromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+fromNib.swift"; sourceTree = "<group>"; };
 		A4070DE326CADC90001697E5 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
+		A4070DE626CADE53001697E5 /* ConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
+		A4070DE726CADE53001697E5 /* ConnectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectViewController.xib; sourceTree = "<group>"; };
 		A4698A1D269F32EC00D70D94 /* ChateeDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChateeDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4698A20269F32EC00D70D94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4698A29269F32EE00D70D94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -84,6 +88,15 @@
 				A4070DE126CAD4DD001697E5 /* UIViewController+fromNib.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A4070DE526CADD9A001697E5 /* Connect */ = {
+			isa = PBXGroup;
+			children = (
+				A4070DE626CADE53001697E5 /* ConnectViewController.swift */,
+				A4070DE726CADE53001697E5 /* ConnectViewController.xib */,
+			);
+			path = Connect;
 			sourceTree = "<group>";
 		};
 		A4698A14269F32EC00D70D94 = {
@@ -130,6 +143,7 @@
 		A4698A40269F3AA200D70D94 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				A4070DE526CADD9A001697E5 /* Connect */,
 				A4698A52269F3AFA00D70D94 /* Login */,
 				A4698A53269F3B0300D70D94 /* Chats */,
 				A4698A54269F3B0F00D70D94 /* Contacts */,
@@ -270,6 +284,7 @@
 				A4698A2D269F32EE00D70D94 /* LaunchScreen.storyboard in Resources */,
 				A4698A51269F3AEF00D70D94 /* SettingsViewController.xib in Resources */,
 				A4070DE426CADC90001697E5 /* Icons.xcassets in Resources */,
+				A4070DE926CADE53001697E5 /* ConnectViewController.xib in Resources */,
 				A4698A2A269F32EE00D70D94 /* Assets.xcassets in Resources */,
 				A4698A49269F3ACC00D70D94 /* ChatsViewController.xib in Resources */,
 				A4698A44269F3AB000D70D94 /* LoginViewController.xib in Resources */,
@@ -288,6 +303,7 @@
 				A4698A43269F3AB000D70D94 /* LoginViewController.swift in Sources */,
 				A4698A3F269F38F800D70D94 /* Account.swift in Sources */,
 				A4698A38269F348800D70D94 /* Coordinator.swift in Sources */,
+				A4070DE826CADE53001697E5 /* ConnectViewController.swift in Sources */,
 				A4698A48269F3ACC00D70D94 /* ChatsViewController.swift in Sources */,
 				A4698A62269F42A900D70D94 /* ChateeClient.swift in Sources */,
 				A4698A59269F3BAE00D70D94 /* AppCoordinator.swift in Sources */,

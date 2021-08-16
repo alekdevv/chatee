@@ -9,6 +9,7 @@ import UIKit
 
 protocol AuthFlowControl: AnyObject {
     func login()
+    func notLoggedIn()
     func logout()
 }
 
@@ -20,8 +21,15 @@ final class AppCoordinator: Coordinator {
         }
     }
     
+    private lazy var connectViewController: UIViewController = {
+        let viewController = ConnectViewController.loadFromNib()
+        viewController.coordinator = self
+        
+        return viewController
+    }()
+    
     private lazy var loginViewController: UIViewController = {
-        let viewController = LoginViewController()
+        let viewController = LoginViewController.loadFromNib()
         viewController.coordinator = self
         
         return viewController
@@ -30,8 +38,8 @@ final class AppCoordinator: Coordinator {
     private lazy var tabBarController: UITabBarController = {
         let tabBarController = UITabBarController()
         tabBarController.setViewControllers(self.tabViewControllers, animated: true)
-        tabBarController.tabBar.tintColor = .red
-        tabBarController.tabBar.barTintColor = .white
+        tabBarController.tabBar.tintColor = #colorLiteral(red: 0.4743623725, green: 0.5280066487, blue: 0.3308900392, alpha: 1)
+        tabBarController.tabBar.unselectedItemTintColor = #colorLiteral(red: 0.8666666667, green: 0.8980392157, blue: 0.7137254902, alpha: 1)
         
         return tabBarController
     }()
@@ -50,18 +58,20 @@ final class AppCoordinator: Coordinator {
     }()
     
     func start() {
-        let alreadyLoggedInTestVar = Bool(ProcessInfo.processInfo.environment["LoggedIn"] ?? "false") ?? false
-        
-        self.viewController = alreadyLoggedInTestVar ? self.tabBarController : Account.shared.isLoggedIn ? self.tabBarController : self.loginViewController
+//        let alreadyLoggedInTestVar = Bool(ProcessInfo.processInfo.environment["LoggedIn"] ?? "false") ?? false
+        self.viewController = self.connectViewController
     }
     
 }
 
 extension AppCoordinator: AuthFlowControl {
     
+    func notLoggedIn() {
+        self.viewController = loginViewController
+    }
+    
     func login() {
         self.viewController = tabBarController
-        
     }
     
     func logout() {
