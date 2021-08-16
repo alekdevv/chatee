@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A4070DE226CAD4DD001697E5 /* UIViewController+fromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4070DE126CAD4DD001697E5 /* UIViewController+fromNib.swift */; };
 		A4698A21269F32EC00D70D94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4698A20269F32EC00D70D94 /* AppDelegate.swift */; };
 		A4698A2A269F32EE00D70D94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4698A29269F32EE00D70D94 /* Assets.xcassets */; };
 		A4698A2D269F32EE00D70D94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4698A2B269F32EE00D70D94 /* LaunchScreen.storyboard */; };
@@ -41,6 +42,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A4070DE126CAD4DD001697E5 /* UIViewController+fromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+fromNib.swift"; sourceTree = "<group>"; };
 		A4698A1D269F32EC00D70D94 /* ChateeDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChateeDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4698A20269F32EC00D70D94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4698A29269F32EE00D70D94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -74,6 +76,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A4070DE026CAD4CA001697E5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A4070DE126CAD4DD001697E5 /* UIViewController+fromNib.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		A4698A14269F32EC00D70D94 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +109,7 @@
 				A4698A40269F3AA200D70D94 /* Scenes */,
 				A4698A5C269F418400D70D94 /* Services */,
 				A4698A5B269F3BBE00D70D94 /* Utils */,
+				A4070DE026CAD4CA001697E5 /* Extensions */,
 				A4698A57269F3B9300D70D94 /* Resources */,
 				A4698A2E269F32EE00D70D94 /* Info.plist */,
 			);
@@ -269,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4070DE226CAD4DD001697E5 /* UIViewController+fromNib.swift in Sources */,
 				A4698A43269F3AB000D70D94 /* LoginViewController.swift in Sources */,
 				A4698A3F269F38F800D70D94 /* Account.swift in Sources */,
 				A4698A38269F348800D70D94 /* Coordinator.swift in Sources */,
@@ -415,6 +427,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7U3WNLSX98;
 				INFOPLIST_FILE = ChateeDemoApp/Info.plist;
@@ -425,6 +438,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.alekdevv.chatee-demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -434,6 +448,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7U3WNLSX98;
 				INFOPLIST_FILE = ChateeDemoApp/Info.plist;
@@ -444,6 +459,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.alekdevv.chatee-demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -53,7 +53,7 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "LoggedIn"
-            value = "false"
+            value = "true"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable

@@ -30,14 +30,14 @@ final class AppCoordinator: Coordinator {
     }()
     
     private lazy var tabViewControllers: [UIViewController] = {
-        let chatsViewController = ChatsViewController()
+        let chatsViewController = ChatsViewController.loadFromNib()
         chatsViewController.tabBarItem = UITabBarItem(title: "Chats", image: UIImage(named: "chats-icon")!, tag: 0)
         
-        let contactsViewController = ContactsViewController()
-        contactsViewController.tabBarItem = UITabBarItem(title: "Contacts", image: UIImage(named: "contacts-icon")!, tag: 0)
+        let contactsViewController = ContactsViewController.loadFromNib()
+        contactsViewController.tabBarItem = UITabBarItem(title: "Contacts", image: UIImage(named: "contacts-icon")!, tag: 1)
         
-        let settingsViewController = SettingsViewController()
-        settingsViewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings-icon")!, tag: 0)
+        let settingsViewController = SettingsViewController.loadFromNib()
+        settingsViewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings-icon")!, tag: 2)
         
         return [chatsViewController, contactsViewController, settingsViewController]
     }()
