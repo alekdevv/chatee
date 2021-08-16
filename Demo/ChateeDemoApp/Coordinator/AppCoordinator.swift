@@ -7,16 +7,22 @@
 
 import UIKit
 
+protocol AuthFlowControl: AnyObject {
+    func login()
+    func logout()
+}
+
 final class AppCoordinator: Coordinator {
     
     var viewController: UIViewController? {
-        let alreadyLoggedInTestVar = Bool(ProcessInfo.processInfo.environment["LoggedIn"] ?? "false") ?? false
-        
-        return alreadyLoggedInTestVar ? self.tabBarController : Account.shared.isLoggedIn ? self.tabBarController : self.loginViewController
+        didSet {
+            UIApplication.shared.windows.first?.rootViewController = self.viewController
+        }
     }
     
     private lazy var loginViewController: UIViewController = {
         let viewController = LoginViewController()
+        viewController.coordinator = self
         
         return viewController
     }()
@@ -25,6 +31,7 @@ final class AppCoordinator: Coordinator {
         let tabBarController = UITabBarController()
         tabBarController.setViewControllers(self.tabViewControllers, animated: true)
         tabBarController.tabBar.tintColor = .red
+        tabBarController.tabBar.barTintColor = .white
         
         return tabBarController
     }()
@@ -41,5 +48,24 @@ final class AppCoordinator: Coordinator {
         
         return [chatsViewController, contactsViewController, settingsViewController]
     }()
+    
+    func start() {
+        let alreadyLoggedInTestVar = Bool(ProcessInfo.processInfo.environment["LoggedIn"] ?? "false") ?? false
+        
+        self.viewController = alreadyLoggedInTestVar ? self.tabBarController : Account.shared.isLoggedIn ? self.tabBarController : self.loginViewController
+    }
+    
+}
+
+extension AppCoordinator: AuthFlowControl {
+    
+    func login() {
+        self.viewController = tabBarController
+        
+    }
+    
+    func logout() {
+        
+    }
     
 }

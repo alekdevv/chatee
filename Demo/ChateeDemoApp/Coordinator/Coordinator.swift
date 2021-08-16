@@ -7,8 +7,10 @@
 
 import UIKit
 
-protocol Coordinator {
+protocol Coordinator: AnyObject {
     
     var viewController: UIViewController? { get }
+    
+    func start()
     
 }
