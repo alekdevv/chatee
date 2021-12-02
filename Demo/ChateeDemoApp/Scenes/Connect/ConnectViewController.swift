@@ -14,7 +14,7 @@ class ConnectViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        ChateeClient.shared.connect(hostName: "www.xmpp.jp", bareJid: "nikola-alek@xmpp.jp", password: "chateeAlek0015")
+        ChateeClient.shared.connect(hostName: "www.xmpp.jp", bareJid: "nikola-alek@xmpp.jp", password: "chateeAlek001522")
         ChateeClient.shared.addProfileObserver(self)
     }
     
